@@ -18,7 +18,6 @@ I specialize in **AI & ML-driven data analysis**, with expertise in **SQL, Pytho
 **Business & Product Thinking:** KPIs, Forecasting, Retention Analysis, Data-Driven Decision Making  
 **Soft Skills:** Collaboration, Communication, Problem Solving, Adaptability
 
-
 ---
 
 ## 🌟 Why This Portfolio
