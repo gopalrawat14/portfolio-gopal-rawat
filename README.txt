@@ -1,32 +1,36 @@
-Massively by HTML5 UP
-html5up.net | @ajlkn
-Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+# 🌟 Gopal Rawat’s Data & AI Portfolio
+
+Welcome! This isn’t just a repository — it’s a window into how I **turn data into decisions, insights into action, and complexity into clarity**.
+
+---
+
+## 💡 About Me
+
+I specialize in **AI & ML-driven data analysis**, with expertise in **SQL, Python, Tableau, Power BI, and statistical modeling**. Data isn’t just numbers to me — it’s a narrative of **patterns, behaviors, and untapped opportunities**. I combine **analytical rigor with product-thinking** to ensure insights don’t just sit on dashboards but evolve into strategies that **create measurable impact**. Alongside technical skills, I bring **emotional intelligence, collaboration, and adaptability**, enabling teams to transform complexity into clarity.
+
+---
+
+## 🛠️ Skills & Tools
+
+**Programming & Analysis:** Python, SQL, C++, Pandas, NumPy, Scikit-Learn  
+**Data Visualization:** Tableau, Power BI, Matplotlib, Seaborn, Excel  
+**Data Science & ML:** Logistic Regression, Random Forests, Predictive Modeling, Classification, Regression, NLP Basics  
+**Business & Product Thinking:** KPIs, Forecasting, Retention Analysis, Data-Driven Decision Making  
+**Soft Skills:** Collaboration, Communication, Problem Solving, Adaptability
 
 
-This is Massively, a text-heavy, article-oriented design built around a huge background
-image (with a new parallax implementation I'm testing) and scroll effects (powered by
-Scrollex). A *slight* departure from all the one-pagers I've been doing lately, but one
-that fulfills a few user requests and makes use of some new techniques I've been wanting
-to try out. Enjoy it :)
+---
 
-Demo images* courtesy of Unsplash, a radtastic collection of CC0 (public domain) images
-you can use for pretty much whatever.
+## 🌟 Why This Portfolio
 
-(* = not included)
+This repository is more than a showcase — it’s a **reflection of my mindset**: curious, analytical, and impact-driven. Whether it’s building models, dashboards, or strategies, my goal is to **turn raw data into decisions that matter**.
 
-AJ
-aj@lkn.io | @ajlkn
+---
 
+## 📬 Connect With Me
 
-Credits:
+- **LinkedIn:** [https://www.linkedin.com/in/gopalrawat/](https://www.linkedin.com/in/gopalrawat/)  
+- **Tableau:** [https://public.tableau.com/app/profile/gopal.rawat3522/vizzes](https://public.tableau.com/app/profile/gopal.rawat3522/vizzes)  
+- **GitHub:** [https://github.com/gopalrawat14](https://github.com/gopalrawat14)  
 
-	Demo Images:
-		Unsplash (unsplash.com)
-
-	Icons:
-		Font Awesome (fontawesome.io)
-
-	Other:
-		jQuery (jquery.com)
-		Scrollex (github.com/ajlkn/jquery.scrollex)
-		Responsive Tools (github.com/ajlkn/responsive-tools)
+> “Data tells a story — I’m here to make it speak.”
