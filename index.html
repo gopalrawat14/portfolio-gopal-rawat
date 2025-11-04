@@ -6,42 +6,178 @@
 -->
 <html>
 	<head>
-		<title>Gopal Rawat Portfolio</title>
+		<title>About me</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/main.css" />
+		<link rel="stylesheet" href="assets/css/custom.css" />
+		<style>
+			/* Tech section inline styles (moved from tech.html for single-page layout) */
+			.tech-container {
+				position: relative;
+				height: 800px;
+				overflow: hidden;
+				background: rgba(255, 255, 255, 0.05);
+				border-radius: 10px;
+				padding: 20px;
+			}
+			
+			.tech-item {
+				position: absolute;
+				display: flex;
+				align-items: center;
+				gap: 10px;
+				background: rgba(255, 255, 255, 0.1);
+				padding: 12px 20px;
+				border-radius: 50px;
+				backdrop-filter: blur(5px);
+				box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+				animation: float 20s infinite;
+				transition: all 0.3s ease;
+				cursor: pointer;
+			}
+
+			.tech-item:hover {
+				transform: scale(1.1);
+				background: rgba(255, 255, 255, 0.2);
+				box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+			}
+
+			.tech-item img {
+				width: 25px;
+				height: 25px;
+				object-fit: contain;
+			}
+
+			.tech-item span {
+				font-size: 0.9em;
+				white-space: nowrap;
+			}
+
+			@keyframes float {
+				0% { transform: translate(0, 0) rotate(0deg); }
+				25% { transform: translate(15px, 15px) rotate(2deg); }
+				50% { transform: translate(0, 30px) rotate(0deg); }
+				75% { transform: translate(-15px, 15px) rotate(-2deg); }
+				100% { transform: translate(0, 0) rotate(0deg); }
+			}
+
+			/* Image styling: apply soft/faded edges and consistent cropping for portfolio images */
+			.image {
+				overflow: hidden; /* ensure the mask applies cleanly */
+				border-radius: 0; /* keep container edges invisible; mask will handle fade */
+				background: transparent;
+				padding: 0;
+			}
+
+			/* Generic portfolio images (project thumbnails, inline images) */
+			.image img,
+			.image.fit img {
+				width: 100%;
+				height: 300px; /* Set fixed height for all project images */
+				display: block;
+				object-fit: cover;
+				object-position: center; /* Center the image within the container */
+				transition: transform 0.35s ease;
+				/* remove visible boxed shadow to avoid showing hard boundaries */
+				box-shadow: none;
+				/* stronger soft vignette so outer edges become fully transparent */
+				-webkit-mask-image: radial-gradient(circle at center, rgba(0,0,0,1) 40%, rgba(0,0,0,0) 100%);
+				mask-image: radial-gradient(circle at center, rgba(0,0,0,1) 40%, rgba(0,0,0,0) 100%);
+			}
+
+			.image img:hover,
+			.image.fit img:hover {
+				transform: scale(1.03);
+				/* remove mask on hover so image becomes fully visible */
+				-webkit-mask-image: none;
+				mask-image: none;
+				box-shadow: 0 12px 34px rgba(0,0,0,0.18);
+				position: relative;
+				z-index: 2;
+			}
+
+			/* When hovering the profile image, also remove the fade so the full image is visible */
+			.image.main img:hover {
+				transform: scale(1.02);
+				-webkit-mask-image: none;
+				mask-image: none;
+				box-shadow: 0 14px 40px rgba(0,0,0,0.22);
+				position: relative;
+				z-index: 3;
+			}
+
+			/* Circular profile image with fully faded edges (no visible boundaries) */
+			.image.main {
+				max-width: 300px;
+				margin: 0 auto;
+				position: relative;
+				border-radius: 50%;
+				overflow: hidden;
+				background: transparent;
+				padding: 0;
+			}
+
+			.image.main img {
+				width: 100%;
+				height: 100%;
+				object-fit: cover;
+				border-radius: 50%;
+				box-shadow: none; /* remove shadow so no hard edge is visible */
+				/* make profile edges fully faded */
+				-webkit-mask-image: radial-gradient(circle at center, rgba(0,0,0,1) 48%, rgba(0,0,0,0) 100%);
+				mask-image: radial-gradient(circle at center, rgba(0,0,0,1) 48%, rgba(0,0,0,0) 100%);
+			}
+
+			/* Position each tech item with different animations */
+			#python { top: 5%; left: 10%; animation-delay: 0s; }
+			#cpp { top: 15%; left: 25%; animation-delay: -1s; }
+			#shell { top: 25%; left: 15%; animation-delay: -2s; }
+			#pandas { top: 35%; left: 20%; animation-delay: -3s; }
+			#numpy { top: 45%; left: 12%; animation-delay: -4s; }
+			#sklearn { top: 55%; left: 18%; animation-delay: -5s; }
+			#jupyter { top: 65%; left: 25%; animation-delay: -6s; }
+			#hadoop { top: 10%; left: 40%; animation-delay: -7s; }
+			#spark { top: 20%; left: 45%; animation-delay: -8s; }
+			#hive { top: 30%; left: 38%; animation-delay: -9s; }
+			#kafka { top: 40%; left: 42%; animation-delay: -10s; }
+			#tableau { top: 50%; left: 35%; animation-delay: -11s; }
+			#matplotlib { top: 60%; left: 40%; animation-delay: -12s; }
+			#seaborn { top: 70%; left: 45%; animation-delay: -13s; }
+			#git { top: 15%; left: 65%; animation-delay: -14s; }
+			#github { top: 25%; left: 70%; animation-delay: -15s; }
+			#linux { top: 35%; left: 65%; animation-delay: -16s; }
+			#aws { top: 45%; left: 68%; animation-delay: -17s; }
+			#gcp { top: 55%; left: 72%; animation-delay: -18s; }
+			#sql { top: 65%; left: 65%; animation-delay: -19s; }
+			#excel { top: 75%; left: 70%; animation-delay: -20s; }
+			#metrics { top: 85%; left: 60%; animation-delay: -21s; }
+		</style>
 		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
 	</head>
 	<body class="is-preload">
 
 		<!-- Wrapper -->
-			<div id="wrapper" class="fade-in">
-
-				<!-- Intro -->
-					<div id="intro">
-						<h1>Hey, This is<br />
-						Gopal Rawat</h1>
-						<p>AI/ML Explorer | Data Analyst | Crafting insights at the crossroads of code and business <a href ="https://github.com/gopalrawat14">@gopalrawat</a></p>
-						<ul class="actions">
-							<li><a href="#header" class="button icon solid solo fa-arrow-down scrolly">Continue</a></li>
-						</ul>
-					</div>
+			<div id="wrapper">
 
 				<!-- Header -->
 					<header id="header">
-						<a href="index.html" class="logo">Portfolio</a>
+						<a href="index.html" class="logo">Gopal Rawat</a>
 					</header>
 
 				<!-- Nav -->
 					<nav id="nav">
 						<ul class="links">
-							<li class="active"><a href="index.html">Projects</a></li>
-							<li><a href="generic.html">About me</a></li>
-							
+							<li class="active"><a class="scrolly" href="#about">About me</a></li>
+							<li><a class="scrolly" href="#tech">Tech Stack</a></li>
+							<li><a class="scrolly" href="#resume">Resume</a></li>
+							<li><a class="scrolly" href="#projects">Projects</a></li>
+							<li><a class="scrolly" href="#tableau">Tableau</a></li>
+							<li><a class="scrolly" href="#contact">Contact Me</a></li>
 						</ul>
 						<ul class="icons">
 							
-									<li><a href="https://www.linkedin.com/in/gopalrawat/" class="icon brands alt fa-linkedin"><span class="label">linkedin</span></a></li>
+									<li><a href="https://linkedin.com/in/gopalrawat/" class="icon brands alt fa-linkedin"><span class="label">linkedin</span></a></li>
 									<li><a href="https://github.com/gopalrawat14" class="icon brands alt fa-github"><span class="label">GitHub</span></a></li>
 						</ul>
 					</nav>
@@ -49,107 +185,236 @@
 				<!-- Main -->
 					<div id="main">
 
-						<!-- Featured Post -->
-							<article class="post featured">
-								<header class="major">
-									
-									<h2><a href="https://github.com/gopalrawat14/Strategic-Supplier-Analysis-for-Business-Growth--python-sql-tableau">Strategic Supplier Analysis for Business Growth<br />
-									</a></h2>
-									<p>In the fast-paced retail industry, efficient inventory and supplier management can make the difference between profit and loss. This project dives deep into supplier performance, sales trends, and inventory dynamics to uncover actionable insights that drive smarter business decisions. By leveraging SQL for data extraction, Python for advanced analytics, and Tableau for interactive dashboards, the project identifies high-performing suppliers, highlights cost-saving opportunities through bulk purchasing, detects slow-moving inventory, and recommends strategies to optimize profitability.<br />
-									The result is a data-driven roadmap for retail teams to reduce risk, maximize supplier efficiency, and enhance overall business growth — all presented through a visually intuitive and interactive dashboard.</p>
-								</header>
-								<a href="https://github.com/gopalrawat14/Strategic-Supplier-Analysis-for-Business-Growth--python-sql-tableau" class="image main"><img src="images/pic01.jpg" alt="" /></a>
-								<ul class="actions special">
-									<li><a href="https://github.com/gopalrawat14/Strategic-Supplier-Analysis-for-Business-Growth--python-sql-tableau" class="button large">View Project</a></li>
-								</ul>
-							</article>
+						<!-- About (top) -->
+						<section id="about" class="post">
+							<header class="major">
+								<h1>Gopal Rawat</h1>
+								<p>I specialize in AI & ML-driven data analysis, with expertise in SQL, Python, Tableau, Power BI, and statistical modeling. To me, data is more than raw information—it’s a narrative of hidden patterns, behaviors, and untapped opportunities. I blend analytical depth with product-thinking, ensuring insights don’t just stay on dashboards but evolve into strategies that drive measurable impact.</p>
+							</header>
+							<div class="image main" style="max-width: 300px; margin: 0 auto; position: relative;">
+								<img src="images/gopal.jpg" alt="Gopal Rawat" style="width: 100%; height: 100%; object-fit: cover;" />
+							</div>
+						</section>
 
-						<!-- Posts -->
-							<section class="posts">
-								<article>
-									<header>
-										
-										<h2><a href="https://github.com/gopalrawat14/Unlocking_Hotel_Bookings_Data">Unlocking<br />
-										 Hotel Bookings Data</a></h2>
-									</header>
-									<a href="https://github.com/gopalrawat14/Unlocking_Hotel_Bookings_Data" class="image fit"><img src="images/pic02.jpg" alt="" /></a>
-									<p>Turning hotel booking chaos into actionable insights. This project dives deep into cancellation trends, pricing patterns, and seasonal behaviors across City and Resort Hotels, uncovering strategies to boost occupancy, optimize revenue, and transform data into smarter business decisions.</p>
-									<ul class="actions special">
-										<li><a href="https://github.com/gopalrawat14/Unlocking_Hotel_Bookings_Data" class="button">View Project</a></li>
-									</ul>
-								</article>
-								<article>
-									<header>
-										
-										<h2><a href="https://github.com/gopalrawat14/Employee-Attrition-in-a-Company">HR Insights Lab <br />
-										</a></h2>
-									</header>
-									<a href="https://github.com/gopalrawat14/Employee-Attrition-in-a-Company" class="image fit"><img src="images/pic03.jpg" alt="" /></a>
-									<p>Leveraging data science to uncover the underlying causes of employee turnover, this project applies predictive modeling and exploratory analysis to identify key factors influencing retention. Through comprehensive data preprocessing, feature engineering, and visualization, it provides actionable insights to help organizations enhance employee satisfaction and reduce attrition rates</p>
-									<ul class="actions special">
-										<li><a href="https://github.com/gopalrawat14/Employee-Attrition-in-a-Company" class="button">View Project</a></li>
-									</ul>
-								</article>
-								<article>
-									<header>
-										
-										<h2><a href="https://github.com/gopalrawat14/Zomato-sales-analysis">Zomato Sales<br />
-										Insights Lab</a></h2>
-									</header>
-									<a href="https://github.com/gopalrawat14/Zomato-sales-analysis" class="image fit"><img src="images/pic04.jpg" alt="" /></a>
-									<p>Decoding Zomato’s sales patterns through data-driven insights—transforming raw transaction data into actionable strategies, uncovering trends, customer behaviors, and payment dynamics that drive smarter business decisions.</p>
-									<ul class="actions special">
-										<li><a href="https://github.com/gopalrawat14/Zomato-sales-analysis" class="button">View Project</a></li>
-									</ul>
-								</article>
-								<article>
-									<header>
-										
-										<h2><a href="https://github.com/gopalrawat14/Revenue-Radar-tableau-dashboard">Revenue Radar<br />
-										Dashboard</a></h2>
-									</header>
-									<a href="https://github.com/gopalrawat14/Revenue-Radar-tableau-dashboard" class="image fit"><img src="images/pic05.jpg" alt="" /></a>
-									<p>A dynamic Tableau dashboard that transforms raw sales data into actionable insights. By visualizing key metrics such as revenue, order volume, and customer behavior, this interactive dashboard empowers business teams to make informed decisions and drive growth.</p>
-									<ul class="actions special">
-										<li><a href="https://github.com/gopalrawat14/Revenue-Radar-tableau-dashboard" class="button">View Project</a></li>
-									</ul>
-								</article>
-								<article>
-									<header>
-										
-										<h2><a href="https://github.com/gopalrawat14/Heisenberg-Breaking-Bad-Analytics-Tableau-Dashboard">Heisenberg Breaking Bad<br />
-										Analytics Tableau Dashboard</a></h2>
-									</header>
-									<a href="https://github.com/gopalrawat14/Heisenberg-Breaking-Bad-Analytics-Tableau-Dashboard" class="image fit"><img src="images/pic06.jpg" alt="" /></a>
-									<p>An interactive Tableau dashboard that transforms raw episode data from the iconic TV series Breaking Bad into compelling visual narratives. This project delves into viewership trends, episode ratings, character appearances, and more, offering fans and analysts a data-driven exploration of the series.</p>
-									<ul class="actions special">
-										<li><a href="https://github.com/gopalrawat14/Heisenberg-Breaking-Bad-Analytics-Tableau-Dashboard" class="button">View Project</a></li>
-									</ul>
-								</article>
-								<article>
-									<header>
-										
-										<h2><a href="https://github.com/gopalrawat14/fintech-product-design-nubra">fintech product design<br />
-										 nubra</a></h2>
-									</header>
-									<a href="https://github.com/gopalrawat14/fintech-product-design-nubra" class="image fit"><img src="images/pic07.jpg" alt="" /></a>
-									<p>A comprehensive product design case study developed for the Nubra Product Intern role, focusing on enhancing the algorithmic trading experience. This project addresses key friction points in onboarding, strategy building, and the transition from manual to automated trading, combining product strategy, UI/UX design, and technical feasibility.</p>
-									<ul class="actions special">
-										<li><a href="https://github.com/gopalrawat14/fintech-product-design-nubra" class="button">View Project</a></li>
-									</ul>
-								</article>
+						<!-- Tech Stack -->
+						<section id="tech" class="post">
+							<header class="major">
+								<h2>Tech Stack</h2>
+								<p>The tools and technologies I use to turn data into insights</p>
+							</header>
+							<div class="tech-container">
+								<!-- Programming Languages -->
+								<div class="tech-item" id="python">
+									<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python">
+									<span>Python</span>
+								</div>
+								<div class="tech-item" id="cpp">
+									<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-original.svg" alt="C++">
+									<span>C++</span>
+								</div>
+								<div class="tech-item" id="shell">
+									<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bash/bash-original.svg" alt="Shell">
+									<span>Shell Scripting</span>
+								</div>
+
+								<!-- Data Science & ML -->
+								<div class="tech-item" id="pandas">
+									<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pandas/pandas-original.svg" alt="Pandas">
+									<span>Pandas</span>
+								</div>
+								<div class="tech-item" id="numpy">
+									<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/numpy/numpy-original.svg" alt="NumPy">
+									<span>NumPy</span>
+								</div>
+								<div class="tech-item" id="sklearn">
+									<img src="https://upload.wikimedia.org/wikipedia/commons/0/05/Scikit_learn_logo_small.svg" alt="Scikit-learn">
+									<span>Scikit-learn</span>
+								</div>
+								<div class="tech-item" id="jupyter">
+									<img src="https://upload.wikimedia.org/wikipedia/commons/3/38/Jupyter_logo.svg" alt="Jupyter">
+									<span>Jupyter</span>
+								</div>
+
+								<!-- Big Data & Cloud -->
+								<div class="tech-item" id="hadoop">
+									<img src="https://cdn.worldvectorlogo.com/logos/hadoop.svg" alt="Hadoop">
+									<span>Hadoop</span>
+								</div>
+								<div class="tech-item" id="spark">
+									<img src="https://upload.wikimedia.org/wikipedia/commons/f/f3/Apache_Spark_logo.svg" alt="Spark">
+									<span>Spark</span>
+								</div>
+								<div class="tech-item" id="hive">
+									<img src="https://www.vectorlogo.zone/logos/apache_hive/apache_hive-icon.svg" alt="Hive">
+									<span>Hive</span>
+								</div>
+								<div class="tech-item" id="kafka">
+									<img src="https://cdn.worldvectorlogo.com/logos/kafka.svg" alt="Kafka">
+									<span>Kafka</span>
+								</div>
+
+								<!-- Visualization -->
+								<div class="tech-item" id="tableau">
+									<img src="https://cdn.worldvectorlogo.com/logos/tableau-software.svg" alt="Tableau">
+									<span>Tableau</span>
+								</div>
+								<div class="tech-item" id="matplotlib">
+									<img src="https://upload.wikimedia.org/wikipedia/commons/8/84/Matplotlib_icon.svg" alt="Matplotlib">
+									<span>Matplotlib</span>
+								</div>
+								<div class="tech-item" id="seaborn">
+									<img src="https://seaborn.pydata.org/_images/logo-mark-lightbg.svg" alt="Seaborn">
+									<span>Seaborn</span>
+								</div>
+
+								<!-- DevOps & Tools -->
+								<div class="tech-item" id="git">
+									<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" alt="Git">
+									<span>Git</span>
+								</div>
+								<div class="tech-item" id="github">
+									<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" alt="GitHub Actions">
+									<span>GitHub Actions</span>
+								</div>
+								<div class="tech-item" id="linux">
+									<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linux/linux-original.svg" alt="Linux">
+									<span>Linux/Unix</span>
+								</div>
+
+								<!-- Cloud -->
+								<div class="tech-item" id="aws">
+									<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA0OCA0OCI+PHBhdGggZmlsbD0iI2ZmOTkwMCIgZD0iTTI5LjMgMzEuM2MtLjMgMC0uNi0uMS0uOC0uMy0uNC0uNC0uNC0xIDAtMS40bDQuNS00LjUtNC41LTQuNWMtLjQtLjQtLjQtMSAwLTEuNC40LS40IDEtLjQgMS40IDBsNS4yIDUuMmMuNC40LjQgMSAwIDEuNGwtNS4yIDUuMmMtLjIuMi0uNS4zLS44LjN6Ii8+PHBhdGggZmlsbD0iI2ZmOTkwMCIgZD0iTTQzLjIgMjQuNWMwLS4zLS4xLS42LS4zLS44bC01LjItNS4yYy0uNC0uNC0xLS40LTEuNCAwLS40LjQtLjQgMSAwIDEuNGw0LjUgNC41LTQuNSA0LjVjLS40LjQtLjQgMSAwIDEuNC4yLjIuNS4zLjguMy4zIDAgLjYtLjEuOC0uM2w1LjItNS4yYy4yLS4yLjMtLjUuMy0uOHoiLz48cGF0aCBmaWxsPSIjMjMxZjIwIiBkPSJNMzggMTIuOGMtLjUgMC0uOS40LS45Ljl2MjAuNmMwIC41LjQuOS45LjkuNSAwIC45LS40LjktLjlWMTMuN2MwLS41LS40LS45LS45LS45eiIvPjxwYXRoIGZpbGw9IiMyMzFmMjAiIGQ9Ik0xMCAxMi44Yy0uNSAwLS45LjQtLjkuOXYyMC42YzAgLjUuNC45LjkuOS41IDAgLjktLjQuOS0uOVYxMy43YzAtLjUtLjQtLjktLjktLjl6Ii8+PHBhdGggZmlsbD0iI2ZmOTkwMCIgZD0iTTI0IDQwYy04LjggMC0xNi03LjItMTYtMTZzNy4yLTE2IDE2LTE2IDE2IDcuMiAxNiAxNi03LjIgMTYtMTYgMTZ6bTAtMzBtLTcuNyAwLTE0IDYuMy0xNCAxNHM2LjMgMTQgMTQgMTQgMTQtNi4zIDE0LTE0UzMxLjcgMTAgMjQgMTB6Ii8+PC9zdmc+" alt="AWS">
+									<span>AWS</span>
+								</div>
+
+								<!-- Database -->
+								<div class="tech-item" id="sql">
+									<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA0OCA0OCIgZmlsbD0iI2Y4OTgxZCI+PHBhdGggZD0iTTM3LjUgMTRoLTI3Yy0xLjkzIDAtMy41IDEuNTctMy41IDMuNXYxM2MwIDEuOTMgMS41NyAzLjUgMy41IDMuNWgyN2MxLjkzIDAgMy41LTEuNTcgMy41LTMuNXYtMTNjMC0xLjkzLTEuNTctMy41LTMuNS0zLjV6bS0yNyAyaDI3YzAuODI3IDAgMS41IDAuNjczIDEuNSAxLjV2Mi41aC0zMHYtMi41YzAtMC44MjcgMC42NzMtMS41IDEuNS0xLjV6bTI3IDE2aC0yN2MtMC44MjcgMC0xLjUtMC42NzMtMS41LTEuNXYtOC41aDMwdjguNWMwIDAuODI3LTAuNjczIDEuNS0xLjUgMS41eiIvPjwvc3ZnPg==" alt="SQL">
+									<span>SQL</span>
+								</div>
+
+								<!-- Business Tools -->
+								<div class="tech-item" id="excel">
+									<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA0OCA0OCIgZmlsbD0iIzIxNzM0NiI+PHBhdGggZD0iTTM5IDhoLTMwYy0xLjEwNCAwLTIgMC44OTYtMiAydjI4YzAgMS4xMDQgMC44OTYgMiAyIDJoMzBjMS4xMDQgMCAyLTAuODk2IDItMnYtMjhjMC0xLjEwNC0wLjg5Ni0yLTItMnptLTMwIDJoMzB2NGgtMzB2LTR6bTMwIDI4aC0zMHYtMjJoMzB2MjJ6Ii8+PHBhdGggZD0iTTMyIDI2aC00di00aDR2NHptLTYgMGgtNHYtNGg0djR6bS02IDBoLTR2LTRoNHY0em0tNiAwaC00di00aDR2NHptMTggNGgtNHYtNGg0djR6bS02IDBoLTR2LTRoNHY0em0tNiAwaC00di00aDR2NHptLTYgMGgtNHYtNGg0djR6Ii8+PC9zdmc+" alt="Excel">
+									<span>Excel</span>
+								</div>
+							</div>
 							</section>
 
-					
+							<!-- Resume -->
+							<section id="resume" class="post">
+								<header class="major">
+									<h2>Resume</h2>
+								</header>
+								<div class="resume-summary" style="text-align: center; max-width:800px; margin:0 auto;">
+									<div style="margin-top: 1.5em;">
+										<a href="resume.html" class="button primary large" style="display: inline-block;">View Resume</a>
+										<a href="https://drive.google.com/file/d/1HrJaQVthjNIwQVbiL2ydmDt9MJwAyvaT/view" class="button" target="_blank" style="display: inline-block; margin-left: 0.8em;">Download PDF</a>
+									</div>
+								</div>
+							</section>
 
-				
+							<!-- Projects -->
+							<section id="projects" class="post">
+								<header class="major">
+									<h2>Projects</h2>
+								</header>
 
+								<!-- Featured -->
+								<article class="post featured">
+									<header>
+										<h2><a href="https://github.com/gopalrawat14/Strategic-Supplier-Analysis-for-Business-Growth--python-sql-tableau">Strategic Supplier Analysis for Business Growth</a></h2>
+										<p>In the fast-paced retail industry, efficient inventory and supplier management can make the difference between profit and loss. This project dives deep into supplier performance, sales trends, and inventory dynamics to uncover actionable insights that drive smarter business decisions. By leveraging SQL for data extraction, Python for advanced analytics, and Tableau for interactive dashboards, the project identifies high-performing suppliers, highlights cost-saving opportunities through bulk purchasing, detects slow-moving inventory, and recommends strategies to optimize profitability. The result is a data-driven roadmap for retail teams to reduce risk, maximize supplier efficiency, and enhance overall business growth — all presented through a visually intuitive and interactive dashboard.</p>
+									</header>
+									<a href="https://github.com/gopalrawat14/Strategic-Supplier-Analysis-for-Business-Growth--python-sql-tableau" class="image fit"><img src="images/pic01.jpg" alt="" /></a>
+									<ul class="actions special">
+										<li><a href="https://github.com/gopalrawat14/Strategic-Supplier-Analysis-for-Business-Growth--python-sql-tableau" class="button large">View Project</a></li>
+									</ul>
+								</article>
 
+								<section class="posts">
+									<article>
+										<header>
+											<h2><a href="https://github.com/gopalrawat14/Unlocking_Hotel_Bookings_Data">Unlocking Hotel Bookings Data</a></h2>
+										</header>
+										<a href="https://github.com/gopalrawat14/Unlocking_Hotel_Bookings_Data" class="image fit"><img src="images/pic02.jpg" alt="" /></a>
+										<p>Turning hotel booking chaos into actionable insights. This project dives deep into cancellation trends, pricing patterns, and seasonal behaviors across City and Resort Hotels, uncovering strategies to boost occupancy, optimize revenue, and transform data into smarter business decisions.</p>
+										<ul class="actions special"><li><a href="https://github.com/gopalrawat14/Unlocking_Hotel_Bookings_Data" class="button">View Project</a></li></ul>
+									</article>
+									<article>
+										<header>
+											<h2><a href="https://github.com/gopalrawat14/Employee-Attrition-in-a-Company">HR Insights Lab</a></h2>
+										</header>
+										<a href="https://github.com/gopalrawat14/Employee-Attrition-in-a-Company" class="image fit"><img src="images/pic03.jpg" alt="" /></a>
+										<p>Leveraging data science to uncover the underlying causes of employee turnover, this project applies predictive modeling and exploratory analysis to identify key factors influencing retention. Through comprehensive data preprocessing, feature engineering, and visualization, it provides actionable insights to help organizations enhance employee satisfaction and reduce attrition rates</p>
+										<ul class="actions special"><li><a href="https://github.com/gopalrawat14/Employee-Attrition-in-a-Company" class="button">View Project</a></li></ul>
+									</article>
+									<article>
+										<header>
+											<h2><a href="https://github.com/gopalrawat14/Zomato-sales-analysis">Zomato Sales Insights Lab</a></h2>
+										</header>
+										<a href="https://github.com/gopalrawat14/Zomato-sales-analysis" class="image fit"><img src="images/pic04.jpg" alt="" /></a>
+										<p>Decoding Zomato’s sales patterns through data-driven insights—transforming raw transaction data into actionable strategies, uncovering trends, customer behaviors, and payment dynamics that drive smarter business decisions.</p>
+										<ul class="actions special"><li><a href="https://github.com/gopalrawat14/Zomato-sales-analysis" class="button">View Project</a></li></ul>
+									</article>
+									<article>
+										<header>
+											<h2><a href="https://github.com/gopalrawat14/Revenue-Radar-tableau-dashboard">Revenue Radar Dashboard</a></h2>
+										</header>
+										<a href="https://github.com/gopalrawat14/Revenue-Radar-tableau-dashboard" class="image fit"><img src="images/pic05.jpg" alt="" /></a>
+										<p>A dynamic Tableau dashboard that transforms raw sales data into actionable insights. By visualizing key metrics such as revenue, order volume, and customer behavior, this interactive dashboard empowers business teams to make informed decisions and drive growth.</p>
+										<ul class="actions special"><li><a href="https://github.com/gopalrawat14/Revenue-Radar-tableau-dashboard" class="button">View Project</a></li></ul>
+									</article>
+									<article>
+										<header>
+											<h2><a href="https://github.com/gopalrawat14/Heisenberg-Breaking-Bad-Analytics-Tableau-Dashboard">Heisenberg Breaking Bad Analytics</a></h2>
+										</header>
+										<a href="https://github.com/gopalrawat14/Heisenberg-Breaking-Bad-Analytics-Tableau-Dashboard" class="image fit"><img src="images/pic06.jpg" alt="" /></a>
+										<p>An interactive Tableau dashboard that transforms raw episode data from the iconic TV series Breaking Bad into compelling visual narratives. This project delves into viewership trends, episode ratings, character appearances, and more, offering fans and analysts a data-driven exploration of the series.</p>
+										<ul class="actions special"><li><a href="https://github.com/gopalrawat14/Heisenberg-Breaking-Bad-Analytics-Tableau-Dashboard" class="button">View Project</a></li></ul>
+									</article>
+									<article>
+										<header>
+											<h2><a href="https://github.com/gopalrawat14/fintech-product-design-nubra">Fintech Product Design - Nubra</a></h2>
+										</header>
+										<a href="https://github.com/gopalrawat14/fintech-product-design-nubra" class="image fit"><img src="images/crypto-dashboard.jpeg" alt="Crypto Trading Dashboard" /></a>
+										<p>A comprehensive product design case study developed for the Nubra Product Intern role, focusing on enhancing the algorithmic trading experience. This project addresses key friction points in onboarding, strategy building, and the transition from manual to automated trading, combining product strategy, UI/UX design, and technical feasibility.</p>
+										<ul class="actions special"><li><a href="https://github.com/gopalrawat14/fintech-product-design-nubra" class="button">View Project</a></li></ul>
+									</article>
+								</section>
+
+								<hr style="border: 0; border-bottom: solid 1px rgba(255, 255, 255, 0.3); margin: 4rem 0; padding: 0;" />
+
+				<!-- Tableau -->
+						<section id="tableau" class="post">
+							<header class="major">
+								<h2>My Tableau Visualizations</h2>
+								<p style="margin-bottom: 1rem;">Explore my interactive data visualizations and dashboards on Tableau Public.</p>
+								<div style="text-align: center;">
+									<a href="https://public.tableau.com/app/profile/gopal.rawat3522/vizzes" class="button primary large" target="_blank">
+										<img src="images/tableau-logo.svg" alt="Tableau" style="height:22px; vertical-align:middle; margin-right:10px;" />
+										<span>View My Tableau Profile</span>
+									</a>
+								</div>
+							</header>
+							</section>
+
+							<hr style="border: 0; border-bottom: solid 1px rgba(255, 255, 255, 0.3); margin: 4rem 0; padding: 0;" />
+
+				<!-- Contact -->
+					<section id="contact" class="post">
+						<header class="major">
+							<h2>Contact Me</h2>
+							<p>Feel free to reach out. I'm always open to discussing new opportunities and collaborations.</p>
+						</header>
+					</section>
+
+				<!-- Footer -->
+					<footer id="footer">
 						<section class="split contact">
 							<section class="alt">
 								<h3>Location</h3>
-								<p>Sehastradhara<br />
-								Dehradun, 248001</p>
+								<p>Dehradun, 248001</p>
 							</section>
 							<section>
 								<h3>Phone</h3>
@@ -163,7 +428,7 @@
 								<h3>Social</h3>
 								<ul class="icons alt">
 									
-									<li><a href="https://www.linkedin.com/in/gopalrawat/" class="icon brands alt fa-linkedin"><span class="label">linkedin</span></a></li>
+									<li><a href="https://linkedin.com/in/gopalrawat/" class="icon brands alt fa-linkedin"><span class="label">linkedin</span></a></li>
 									<li><a href="https://github.com/gopalrawat14" class="icon brands alt fa-github"><span class="label">GitHub</span></a></li>
 								</ul>
 							</section>
@@ -171,10 +436,6 @@
 					</footer>
 
 				<!-- Copyright -->
-					<div id="copyright">
-						<ul><li>&copy; Untitled</li><li>Design: <a href="https://html5up.net">HTML5 UP</a></li></ul>
-					</div>
-
 			</div>
 
 		<!-- Scripts -->

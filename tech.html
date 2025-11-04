@@ -1,0 +1,240 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>Tech Stack - Gopal Rawat</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<link rel="stylesheet" href="assets/css/custom.css" />
+		<style>
+			.tech-container {
+				position: relative;
+				height: 800px;
+				overflow: hidden;
+				background: rgba(255, 255, 255, 0.05);
+				border-radius: 10px;
+				padding: 20px;
+			}
+			
+			.tech-item {
+				position: absolute;
+				display: flex;
+				align-items: center;
+				gap: 10px;
+				background: rgba(255, 255, 255, 0.1);
+				padding: 12px 20px;
+				border-radius: 50px;
+				backdrop-filter: blur(5px);
+				box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+				animation: float 20s infinite;
+				transition: all 0.3s ease;
+				cursor: pointer;
+			}
+
+			.tech-item:hover {
+				transform: scale(1.1);
+				background: rgba(255, 255, 255, 0.2);
+				box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+			}
+
+			.tech-item img {
+				width: 25px;
+				height: 25px;
+				object-fit: contain;
+			}
+
+			.tech-item span {
+				font-size: 0.9em;
+				white-space: nowrap;
+			}
+
+			@keyframes float {
+				0% { transform: translate(0, 0) rotate(0deg); }
+				25% { transform: translate(15px, 15px) rotate(2deg); }
+				50% { transform: translate(0, 30px) rotate(0deg); }
+				75% { transform: translate(-15px, 15px) rotate(-2deg); }
+				100% { transform: translate(0, 0) rotate(0deg); }
+			}
+
+			/* Position each tech item with different animations */
+			#python { top: 5%; left: 10%; animation-delay: 0s; }
+			#cpp { top: 15%; left: 25%; animation-delay: -1s; }
+			#shell { top: 25%; left: 15%; animation-delay: -2s; }
+			#pandas { top: 35%; left: 20%; animation-delay: -3s; }
+			#numpy { top: 45%; left: 12%; animation-delay: -4s; }
+			#sklearn { top: 55%; left: 18%; animation-delay: -5s; }
+			#jupyter { top: 65%; left: 25%; animation-delay: -6s; }
+			#hadoop { top: 10%; left: 40%; animation-delay: -7s; }
+			#spark { top: 20%; left: 45%; animation-delay: -8s; }
+			#hive { top: 30%; left: 38%; animation-delay: -9s; }
+			#kafka { top: 40%; left: 42%; animation-delay: -10s; }
+			#tableau { top: 50%; left: 35%; animation-delay: -11s; }
+			#matplotlib { top: 60%; left: 40%; animation-delay: -12s; }
+			#seaborn { top: 70%; left: 45%; animation-delay: -13s; }
+			#git { top: 15%; left: 65%; animation-delay: -14s; }
+			#github { top: 25%; left: 70%; animation-delay: -15s; }
+			#linux { top: 35%; left: 65%; animation-delay: -16s; }
+			#aws { top: 45%; left: 68%; animation-delay: -17s; }
+			#gcp { top: 55%; left: 72%; animation-delay: -18s; }
+			#sql { top: 65%; left: 65%; animation-delay: -19s; }
+			#excel { top: 75%; left: 70%; animation-delay: -20s; }
+			#metrics { top: 85%; left: 60%; animation-delay: -21s; }
+		</style>
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Header -->
+					<header id="header">
+						<a href="index.html" class="logo">Gopal Rawat</a>
+					</header>
+
+				<!-- Nav -->
+					<nav id="nav">
+						<ul class="links">
+							<li><a href="index.html#about" class="scrolly">About me</a></li>
+							<li><a href="index.html#projects" class="scrolly">Projects</a></li>
+							<li><a href="index.html#resume" class="scrolly">Resume</a></li>
+							<li class="active"><a href="index.html#tech" class="scrolly">Tech Stack</a></li>
+						</ul>
+						<ul class="icons">
+							<li><a href="https://www.linkedin.com/in/gopalrawat/" class="icon brands alt fa-linkedin"><span class="label">LinkedIn</span></a></li>
+							<li><a href="https://github.com/gopalrawat14" class="icon brands alt fa-github"><span class="label">GitHub</span></a></li>
+						</ul>
+					</nav>
+
+				<!-- Main -->
+					<div id="main">
+						<section class="post">
+							<header class="major">
+								<h1>Tech Stack</h1>
+								<p>The tools and technologies I use to turn data into insights</p>
+							</header>
+
+							<div class="tech-container">
+								<!-- Programming Languages -->
+								<div class="tech-item" id="python">
+									<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python">
+									<span>Python</span>
+								</div>
+								<div class="tech-item" id="cpp">
+									<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-original.svg" alt="C++">
+									<span>C++</span>
+								</div>
+								<div class="tech-item" id="shell">
+									<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bash/bash-original.svg" alt="Shell">
+									<span>Shell Scripting</span>
+								</div>
+
+								<!-- Data Science & ML -->
+								<div class="tech-item" id="pandas">
+									<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pandas/pandas-original.svg" alt="Pandas">
+									<span>Pandas</span>
+								</div>
+								<div class="tech-item" id="numpy">
+									<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/numpy/numpy-original.svg" alt="NumPy">
+									<span>NumPy</span>
+								</div>
+								<div class="tech-item" id="sklearn">
+									<img src="https://upload.wikimedia.org/wikipedia/commons/0/05/Scikit_learn_logo_small.svg" alt="Scikit-learn">
+									<span>Scikit-learn</span>
+								</div>
+								<div class="tech-item" id="jupyter">
+									<img src="https://upload.wikimedia.org/wikipedia/commons/3/38/Jupyter_logo.svg" alt="Jupyter">
+									<span>Jupyter</span>
+								</div>
+
+								<!-- Big Data & Cloud -->
+								<div class="tech-item" id="hadoop">
+									<img src="https://cdn.worldvectorlogo.com/logos/hadoop.svg" alt="Hadoop">
+									<span>Hadoop</span>
+								</div>
+								<div class="tech-item" id="spark">
+									<img src="https://upload.wikimedia.org/wikipedia/commons/f/f3/Apache_Spark_logo.svg" alt="Spark">
+									<span>Spark</span>
+								</div>
+								<div class="tech-item" id="hive">
+									<img src="https://www.vectorlogo.zone/logos/apache_hive/apache_hive-icon.svg" alt="Hive">
+									<span>Hive</span>
+								</div>
+								<div class="tech-item" id="kafka">
+									<img src="https://cdn.worldvectorlogo.com/logos/kafka.svg" alt="Kafka">
+									<span>Kafka</span>
+								</div>
+
+								<!-- Visualization -->
+								<div class="tech-item" id="tableau">
+									<img src="https://cdn.worldvectorlogo.com/logos/tableau-software.svg" alt="Tableau">
+									<span>Tableau</span>
+								</div>
+								<div class="tech-item" id="matplotlib">
+									<img src="https://upload.wikimedia.org/wikipedia/commons/8/84/Matplotlib_icon.svg" alt="Matplotlib">
+									<span>Matplotlib</span>
+								</div>
+								<div class="tech-item" id="seaborn">
+									<img src="https://seaborn.pydata.org/_images/logo-mark-lightbg.svg" alt="Seaborn">
+									<span>Seaborn</span>
+								</div>
+
+								<!-- DevOps & Tools -->
+								<div class="tech-item" id="git">
+									<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" alt="Git">
+									<span>Git</span>
+								</div>
+								<div class="tech-item" id="github">
+									<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" alt="GitHub Actions">
+									<span>GitHub Actions</span>
+								</div>
+								<div class="tech-item" id="linux">
+									<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linux/linux-original.svg" alt="Linux">
+									<span>Linux/Unix</span>
+								</div>
+
+								<!-- Cloud -->
+								<div class="tech-item" id="aws">
+									<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA0OCA0OCI+PHBhdGggZmlsbD0iI2ZmOTkwMCIgZD0iTTI5LjMgMzEuM2MtLjMgMC0uNi0uMS0uOC0uMy0uNC0uNC0uNC0xIDAtMS40bDQuNS00LjUtNC41LTQuNWMtLjQtLjQtLjQtMSAwLTEuNC40LS40IDEtLjQgMS40IDBsNS4yIDUuMmMuNC40LjQgMSAwIDEuNGwtNS4yIDUuMmMtLjIuMi0uNS4zLS44LjN6Ii8+PHBhdGggZmlsbD0iI2ZmOTkwMCIgZD0iTTQzLjIgMjQuNWMwLS4zLS4xLS42LS4zLS44bC01LjItNS4yYy0uNC0uNC0xLS40LTEuNCAwLS40LjQtLjQgMSAwIDEuNGw0LjUgNC41LTQuNSA0LjVjLS40LjQtLjQgMSAwIDEuNC4yLjIuNS4zLjguMy4zIDAgLjYtLjEuOC0uM2w1LjItNS4yYy4yLS4yLjMtLjUuMy0uOHoiLz48cGF0aCBmaWxsPSIjMjMxZjIwIiBkPSJNMzggMTIuOGMtLjUgMC0uOS40LS45Ljl2MjAuNmMwIC41LjQuOS45LjkuNSAwIC45LS40LjktLjlWMTMuN2MwLS41LS40LS45LS45LS45eiIvPjxwYXRoIGZpbGw9IiMyMzFmMjAiIGQ9Ik0xMCAxMi44Yy0uNSAwLS45LjQtLjkuOXYyMC42YzAgLjUuNC45LjkuOS41IDAgLjktLjQuOS0uOVYxMy43YzAtLjUtLjQtLjktLjktLjl6Ii8+PHBhdGggZmlsbD0iI2ZmOTkwMCIgZD0iTTI0IDQwYy04LjggMC0xNi03LjItMTYtMTZzNy4yLTE2IDE2LTE2IDE2IDcuMiAxNiAxNi03LjIgMTYtMTYgMTZ6bTAtMzBjLTcuNyAwLTE0IDYuMy0xNCAxNHM2LjMgMTQgMTQgMTQgMTQtNi4zIDE0LTE0UzMxLjcgMTAgMjQgMTB6Ii8+PC9zdmc+" alt="AWS">
+									<span>AWS</span>
+								</div>
+								<div class="tech-item" id="gcp">
+									<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/googlecloud/googlecloud-original.svg" alt="GCP">
+									<span>GCP</span>
+								</div>
+
+								<!-- Database -->
+								<div class="tech-item" id="sql">
+									<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA0OCA0OCIgZmlsbD0iI2Y4OTgxZCI+PHBhdGggZD0iTTM3LjUgMTRoLTI3Yy0xLjkzIDAtMy41IDEuNTctMy41IDMuNXYxM2MwIDEuOTMgMS41NyAzLjUgMy41IDMuNWgyN2MxLjkzIDAgMy41LTEuNTcgMy41LTMuNXYtMTNjMC0xLjkzLTEuNTctMy41LTMuNS0zLjV6bS0yNyAyaDI3YzAuODI3IDAgMS41IDAuNjczIDEuNSAxLjV2Mi41aC0zMHYtMi41YzAtMC44MjcgMC42NzMtMS41IDEuNS0xLjV6bTI3IDE2aC0yN2MtMC44MjcgMC0xLjUtMC42NzMtMS41LTEuNXYtOC41aDMwdjguNWMwIDAuODI3LTAuNjczIDEuNS0xLjUgMS41eiIvPjwvc3ZnPg==" alt="SQL">
+									<span>SQL</span>
+								</div>
+
+								<!-- Business Tools -->
+								<div class="tech-item" id="excel">
+									<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA0OCA0OCIgZmlsbD0iIzIxNzM0NiI+PHBhdGggZD0iTTM5IDhoLTMwYy0xLjEwNCAwLTIgMC44OTYtMiAydjI4YzAgMS4xMDQgMC44OTYgMiAyIDJoMzBjMS4xMDQgMCAyLTAuODk2IDItMnYtMjhjMC0xLjEwNC0wLjg5Ni0yLTItMnptLTMwIDJoMzB2NGgtMzB2LTR6bTMwIDI4aC0zMHYtMjJoMzB2MjJ6Ii8+PHBhdGggZD0iTTMyIDI2aC00di00aDR2NHptLTYgMGgtNHYtNGg0djR6bS02IDBoLTR2LTRoNHY0em0tNiAwaC00di00aDR2NHptMTggNGgtNHYtNGg0djR6bS02IDBoLTR2LTRoNHY0em0tNiAwaC00di00aDR2NHptLTYgMGgtNHYtNGg0djR6Ii8+PC9zdmc+" alt="Excel">
+									<span>Excel</span>
+								</div>
+								<div class="tech-item" id="metrics">
+									<img src="https://cdn-icons-png.flaticon.com/512/6214/6214761.png" alt="Business Metrics">
+									<span>Business Metrics</span>
+								</div>
+							</div>
+						</section>
+					</div>
+
+				<!-- Footer -->
+					<footer id="footer">
+					</footer>
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>
