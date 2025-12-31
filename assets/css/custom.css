@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Playfair+Display:wght@600;700&family=Inter:wght@300;400;500;600;700&display=swap');
+
 .image.main {
     display: block;
     margin: 2rem 0;
@@ -9,4 +11,328 @@
 .image.main img {
     width: 100%;
     height: auto;
+}
+
+/* Work Experience Styles */
+.experience-timeline {
+    position: relative;
+    padding: 2rem 0;
+}
+
+.experience-item {
+    margin-bottom: 2.5rem;
+    padding-left: 3rem;
+    position: relative;
+}
+
+.experience-item:before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.5rem;
+    width: 1.5rem;
+    height: 1.5rem;
+    background: #0066ff;
+    border-radius: 50%;
+    border: 0.25rem solid #fff;
+    box-shadow: 0 0 0 0.25rem #0066ff;
+}
+
+.experience-header {
+    margin-bottom: 1.5rem;
+}
+
+.experience-header h3 {
+    margin: 0 0 0.5rem 0;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #222;
+}
+
+.experience-company {
+    margin: 0.25rem 0;
+    font-size: 1.1rem;
+    color: #0066ff;
+    font-weight: 600;
+}
+
+.experience-date {
+    margin: 0.25rem 0;
+    font-size: 0.95rem;
+    color: #999;
+    font-style: italic;
+}
+
+.experience-content {
+    color: #666;
+    line-height: 1.6;
+}
+
+.experience-content ul {
+    margin-left: 1.5rem;
+    color: #666;
+}
+
+.experience-content li {
+    margin: 0.5rem 0;
+}
+
+/* Dark Mode - Work Experience */
+body.dark-mode .experience-header h3 {
+    color: #fff;
+}
+
+body.dark-mode .experience-company {
+    color: #66b3ff;
+}
+
+body.dark-mode .experience-date {
+    color: #aaa;
+}
+
+body.dark-mode .experience-content,
+body.dark-mode .experience-content ul {
+    color: #ddd;
+}
+
+body.dark-mode .experience-item:before {
+    background: #0066ff;
+    box-shadow: 0 0 0 0.25rem #0066ff;
+}
+
+/* Beautiful About Section Styles */
+.about-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    font-family: 'Inter', sans-serif;
+}
+
+.about-hero {
+    font-size: 1.3em;
+    font-weight: 600;
+    line-height: 1.8;
+    text-align: center;
+    margin-bottom: 3rem;
+    color: #222;
+    letter-spacing: 0.5px;
+    font-family: 'Poppins', sans-serif;
+}
+
+.about-hero .highlight {
+    color: #0066ff;
+    font-weight: 700;
+    background: linear-gradient(135deg, #0066ff 0%, #0052cc 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.about-pillars {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    margin-bottom: 3rem;
+}
+
+.pillar {
+    padding: 2rem;
+    background: linear-gradient(135deg, rgba(0, 102, 255, 0.05) 0%, rgba(0, 102, 255, 0.02) 100%);
+    border: 1px solid rgba(0, 102, 255, 0.15);
+    border-radius: 12px;
+    transition: all 0.3s ease;
+    text-align: center;
+}
+
+.pillar:hover {
+    transform: translateY(-5px);
+    border-color: #0066ff;
+    box-shadow: 0 10px 30px rgba(0, 102, 255, 0.15);
+    background: linear-gradient(135deg, rgba(0, 102, 255, 0.1) 0%, rgba(0, 102, 255, 0.05) 100%);
+}
+
+.pillar-icon {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    display: block;
+}
+
+.pillar h4 {
+    margin: 0 0 1rem 0;
+    font-size: 1.2em;
+    color: #0066ff;
+    font-weight: 700;
+    font-family: 'Playfair Display', serif;
+    letter-spacing: 0.3px;
+}
+
+.pillar p {
+    margin: 0;
+    color: #555;
+    line-height: 1.6;
+    font-size: 0.95em;
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+}
+
+.about-tagline {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1.5rem;
+    padding: 2rem;
+    background: linear-gradient(90deg, rgba(0, 102, 255, 0.08) 0%, rgba(0, 102, 255, 0.02) 50%, rgba(0, 102, 255, 0.08) 100%);
+    border: 2px solid #0066ff;
+    border-radius: 15px;
+    margin-top: 2rem;
+    flex-wrap: wrap;
+}
+
+.tagline-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.3rem;
+}
+
+.tagline-label {
+    font-weight: 700;
+    color: #0066ff;
+    font-size: 1.1em;
+    font-family: 'Playfair Display', serif;
+    letter-spacing: 0.3px;
+}
+
+.tagline-text {
+    color: #666;
+    font-size: 0.95em;
+    font-style: italic;
+    font-family: 'Inter', sans-serif;
+}
+
+.tagline-divider {
+    color: #0066ff;
+    font-size: 1.5em;
+    font-weight: 300;
+}
+
+/* Dark Mode - About Section */
+body.dark-mode .about-hero {
+    color: #fff;
+}
+
+body.dark-mode .about-hero .highlight {
+    background: linear-gradient(135deg, #66b3ff 0%, #4d94ff 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+body.dark-mode .pillar {
+    background: linear-gradient(135deg, rgba(0, 102, 255, 0.1) 0%, rgba(0, 102, 255, 0.05) 100%);
+    border-color: rgba(0, 102, 255, 0.3);
+}
+
+body.dark-mode .pillar:hover {
+    border-color: #66b3ff;
+    box-shadow: 0 10px 30px rgba(0, 102, 255, 0.25);
+    background: linear-gradient(135deg, rgba(0, 102, 255, 0.15) 0%, rgba(0, 102, 255, 0.1) 100%);
+}
+
+body.dark-mode .pillar h4 {
+    color: #66b3ff;
+}
+
+body.dark-mode .pillar p {
+    color: #ccc;
+}
+
+body.dark-mode .about-tagline {
+    background: linear-gradient(90deg, rgba(0, 102, 255, 0.15) 0%, rgba(0, 102, 255, 0.05) 50%, rgba(0, 102, 255, 0.15) 100%);
+    border-color: #66b3ff;
+}
+
+body.dark-mode .tagline-label {
+    color: #66b3ff;
+}
+
+body.dark-mode .tagline-text {
+    color: #aaa;
+}
+
+/* Floating & Sliding Animations */
+@keyframes slideInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-40px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideInRight {
+    from {
+        opacity: 0;
+        transform: translateX(40px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+.about-hero {
+    animation: slideInDown 0.8s ease-out;
+}
+
+.pillar {
+    animation: float 3s ease-in-out infinite;
+}
+
+.pillar:nth-child(1) {
+    animation: slideInLeft 0.8s ease-out 0.2s backwards, float 3s ease-in-out 0.8s infinite;
+}
+
+.pillar:nth-child(2) {
+    animation: slideInUp 0.8s ease-out 0.4s backwards, float 3s ease-in-out 1s infinite;
+}
+
+.pillar:nth-child(3) {
+    animation: slideInRight 0.8s ease-out 0.6s backwards, float 3s ease-in-out 1.2s infinite;
+}
+
+.about-tagline {
+    animation: slideInUp 0.8s ease-out 0.8s backwards;
 }
