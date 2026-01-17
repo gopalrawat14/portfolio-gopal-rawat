@@ -11,103 +11,114 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/main.css" />
 		<link rel="stylesheet" href="assets/css/custom.css" />
+		<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=Poppins:wght@400;700;900&display=swap" rel="stylesheet">
 		<style>
-			/* Tech section inline styles (moved from tech.html for single-page layout) */
-			.tech-container {
-				position: relative;
-				height: 800px;
-				overflow: hidden;
-				background: rgba(255, 255, 255, 0.05);
-				border-radius: 10px;
-				padding: 20px;
+			:root {
+				--yellow: #FFD166;
+				--pink: #FF61A6;
+				--orange: #FF9F1C;
+				--blue: #3A86FF;
+				--offwhite: #FFF8F0;
+				--card-radius: 32px;
+				--shadow: 0 8px 32px rgba(0,0,0,0.08);
 			}
-			
-			.tech-item {
+			body {
+				background: var(--yellow);
+				font-family: 'Inter', 'Poppins', sans-serif;
+				scroll-behavior: smooth;
+			}
+			.section-block {
+				border-radius: var(--card-radius);
+				box-shadow: var(--shadow);
+				margin: 48px auto;
+				padding: 48px 32px;
+				background: var(--section-bg, #fff);
+				position: relative;
+				overflow: hidden;
+				max-width: 1100px;
+			}
+			.hero-bg-blob {
 				position: absolute;
-				display: flex;
+				top: -80px; left: -120px;
+				width: 600px; height: 400px;
+				background: radial-gradient(circle at 40% 40%, #ff2a7a 70%, var(--yellow) 100%);
+				border-radius: 60% 40% 60% 40% / 40% 60% 40% 60%;
+				z-index: 0;
+				filter: blur(8px);
+				opacity: 0.8;
+			}
+			.hero-title {
+				font-size: 4rem;
+				font-weight: 900;
+				color: #222;
+				letter-spacing: -2px;
+				margin-bottom: 0.5em;
+				font-family: 'Poppins', 'Inter', sans-serif;
+			}
+			.hero-tagline {
+				font-size: 1.5rem;
+				color: var(--blue);
+				font-weight: 700;
+				margin-bottom: 1.5em;
+			}
+			.hero-profile {
+				transform: rotate(-6deg);
+				box-shadow: 0 4px 24px rgba(255,61,166,0.18);
+				background: var(--pink);
+				border-radius: 32px;
+				padding: 8px;
+			}
+			.card {
+				background: #fff;
+				border-radius: 24px;
+				box-shadow: 0 4px 16px rgba(58,134,255,0.08);
+				padding: 32px;
+				margin: 24px;
+				transition: transform 0.2s, box-shadow 0.2s, background 0.2s;
+				position: relative;
+			}
+			.card:hover {
+				transform: translateY(-8px) scale(1.03) rotate(-2deg);
+				box-shadow: 0 8px 32px rgba(255,61,166,0.12);
+				background: var(--offwhite);
+			}
+			.section-title {
+				font-size: 2.5rem;
+				font-weight: 900;
+				color: #222;
+				font-family: 'Poppins', 'Inter', sans-serif;
+				margin-bottom: 1em;
+				letter-spacing: -1px;
+			}
+			.section-block:nth-child(2n) {
+				background: var(--offwhite);
+			}
+			.section-block:nth-child(2n+1) {
+				background: #fff;
+			}
+			.tech-item {
+				display: inline-flex;
 				align-items: center;
 				gap: 10px;
-				background: rgba(255, 255, 255, 0.1);
+				background: var(--yellow);
 				padding: 12px 20px;
 				border-radius: 50px;
-				backdrop-filter: blur(5px);
-				box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-				animation: float 20s infinite;
-				transition: all 0.3s ease;
-				cursor: pointer;
+				box-shadow: 0 2px 8px rgba(58,134,255,0.08);
+				margin: 8px;
+				font-weight: 700;
+				font-size: 1.1em;
+				transition: background 0.2s, transform 0.2s;
 			}
-
 			.tech-item:hover {
-				transform: scale(1.1);
-				background: rgba(255, 255, 255, 0.2);
-				box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+				background: var(--pink);
+				color: #fff;
+				transform: scale(1.08) rotate(-2deg);
 			}
-
 			.tech-item img {
-				width: 25px;
-				height: 25px;
+				width: 28px;
+				height: 28px;
 				object-fit: contain;
 			}
-
-			.tech-item span {
-				font-size: 0.9em;
-				white-space: nowrap;
-			}
-
-			@keyframes float {
-				0% { transform: translate(0, 0) rotate(0deg); }
-				25% { transform: translate(15px, 15px) rotate(2deg); }
-				50% { transform: translate(0, 30px) rotate(0deg); }
-				75% { transform: translate(-15px, 15px) rotate(-2deg); }
-				100% { transform: translate(0, 0) rotate(0deg); }
-			}
-
-			/* Image styling: apply soft/faded edges and consistent cropping for portfolio images */
-			.image {
-				overflow: hidden; /* ensure the mask applies cleanly */
-				border-radius: 0; /* keep container edges invisible; mask will handle fade */
-				background: transparent;
-				padding: 0;
-			}
-
-			/* Generic portfolio images (project thumbnails, inline images) */
-			.image img,
-			.image.fit img {
-				width: 100%;
-				height: 300px; /* Set fixed height for all project images */
-				display: block;
-				object-fit: cover;
-				object-position: center; /* Center the image within the container */
-				transition: transform 0.35s ease;
-				/* remove visible boxed shadow to avoid showing hard boundaries */
-				box-shadow: none;
-				/* stronger soft vignette so outer edges become fully transparent */
-				-webkit-mask-image: radial-gradient(circle at center, rgba(0,0,0,1) 40%, rgba(0,0,0,0) 100%);
-				mask-image: radial-gradient(circle at center, rgba(0,0,0,1) 40%, rgba(0,0,0,0) 100%);
-			}
-
-			.image img:hover,
-			.image.fit img:hover {
-				transform: scale(1.03);
-				/* remove mask on hover so image becomes fully visible */
-				-webkit-mask-image: none;
-				mask-image: none;
-				box-shadow: 0 12px 34px rgba(0,0,0,0.18);
-				position: relative;
-				z-index: 2;
-			}
-
-			/* When hovering the profile image, also remove the fade so the full image is visible */
-			.image.main img:hover {
-				transform: scale(1.02);
-				-webkit-mask-image: none;
-				mask-image: none;
-				box-shadow: 0 14px 40px rgba(0,0,0,0.22);
-				position: relative;
-				z-index: 3;
-			}
-
-			/* Circular profile image with fully faded edges (no visible boundaries) */
 			.image.main {
 				max-width: 300px;
 				margin: 0 auto;
@@ -116,256 +127,323 @@
 				overflow: hidden;
 				background: transparent;
 				padding: 0;
+				box-shadow: 0 4px 24px rgba(255,61,166,0.18);
 			}
-
 			.image.main img {
 				width: 100%;
 				height: 100%;
 				object-fit: cover;
 				border-radius: 50%;
-				box-shadow: none; /* remove shadow so no hard edge is visible */
-				/* make profile edges fully faded */
-				-webkit-mask-image: radial-gradient(circle at center, rgba(0,0,0,1) 48%, rgba(0,0,0,0) 100%);
-				mask-image: radial-gradient(circle at center, rgba(0,0,0,1) 48%, rgba(0,0,0,0) 100%);
+				box-shadow: none;
 			}
-
-			/* Position each tech item with different animations */
-			#python { top: 5%; left: 10%; animation-delay: 0s; }
-			#cpp { top: 15%; left: 25%; animation-delay: -1s; }
-			#shell { top: 25%; left: 15%; animation-delay: -2s; }
-			#pandas { top: 35%; left: 20%; animation-delay: -3s; }
-			#numpy { top: 45%; left: 12%; animation-delay: -4s; }
-			#sklearn { top: 55%; left: 18%; animation-delay: -5s; }
-			#jupyter { top: 65%; left: 25%; animation-delay: -6s; }
-			#hadoop { top: 10%; left: 40%; animation-delay: -7s; }
-			#spark { top: 20%; left: 45%; animation-delay: -8s; }
-			#hive { top: 30%; left: 38%; animation-delay: -9s; }
-			#kafka { top: 40%; left: 42%; animation-delay: -10s; }
-			#tableau { top: 50%; left: 35%; animation-delay: -11s; }
-			#matplotlib { top: 60%; left: 40%; animation-delay: -12s; }
-			#seaborn { top: 70%; left: 45%; animation-delay: -13s; }
-			#git { top: 15%; left: 65%; animation-delay: -14s; }
-			#github { top: 25%; left: 70%; animation-delay: -15s; }
-			#linux { top: 35%; left: 65%; animation-delay: -16s; }
-			#aws { top: 45%; left: 68%; animation-delay: -17s; }
-			#gcp { top: 55%; left: 72%; animation-delay: -18s; }
-			#sql { top: 65%; left: 65%; animation-delay: -19s; }
-			#excel { top: 75%; left: 70%; animation-delay: -20s; }
-			#metrics { top: 85%; left: 60%; animation-delay: -21s; }
+			.about-pillars {
+				display: flex;
+				gap: 32px;
+				justify-content: center;
+				margin-bottom: 3rem;
+			}
+			.pillar {
+				background: var(--blue);
+				color: #222;
+				font-weight: 600;
+				border-radius: 24px;
+				padding: 2rem;
+				box-shadow: 0 4px 16px rgba(58,134,255,0.12);
+				flex: 1;
+				min-width: 220px;
+				transition: transform 0.2s, box-shadow 0.2s;
+				position: relative;
+			}
+			.pillar:hover {
+				transform: scale(1.04) rotate(-2deg);
+				box-shadow: 0 8px 32px rgba(255,61,166,0.12);
+				background: var(--pink);
+				color: #fff !important;
+			}
+			.pillar-icon {
+				font-size: 2.5rem;
+				margin-bottom: 1rem;
+				display: block;
+			}
+			.about-tagline {
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				gap: 1.5rem;
+				padding: 2rem;
+				background: var(--offwhite);
+				border-radius: 15px;
+				margin-top: 2rem;
+				flex-wrap: wrap;
+				font-weight: 700;
+				font-size: 1.2em;
+			}
+			.tagline-label {
+				color: var(--orange);
+				font-family: 'Poppins', 'Inter', sans-serif;
+			}
+			.tagline-divider {
+				color: var(--pink);
+				font-size: 1.5em;
+				font-weight: 300;
+			}
+			.resume-summary .button {
+				font-size: 1.1em;
+				border-radius: 24px;
+				background: var(--blue);
+				color: #fff;
+				font-weight: 700;
+				box-shadow: 0 2px 8px rgba(58,134,255,0.12);
+				margin: 0 8px;
+				padding: 12px 28px;
+				transition: background 0.2s, transform 0.2s;
+			}
+			.resume-summary .button:hover {
+				background: var(--pink);
+				color: #fff;
+				transform: scale(1.08);
+			}
+			/* Add more playful shapes */
+			.blob {
+				position: absolute;
+				z-index: 0;
+				pointer-events: none;
+				opacity: 0.5;
+			}
+			.blob1 {
+				top: -120px; left: -80px;
+				width: 320px; height: 220px;
+				background: var(--pink);
+				border-radius: 60% 40% 60% 40% / 40% 60% 40% 60%;
+				filter: blur(12px);
+			}
+			.blob2 {
+				bottom: -100px; right: -60px;
+				width: 260px; height: 180px;
+				background: var(--blue);
+				border-radius: 50% 50% 40% 60% / 60% 40% 60% 40%;
+				filter: blur(16px);
+			}
+			.blob3 {
+				top: 50%; left: 80%;
+				width: 180px; height: 120px;
+				background: var(--yellow);
+				border-radius: 60% 40% 60% 40% / 40% 60% 40% 60%;
+				filter: blur(10px);
+			}
 		</style>
 		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
 	</head>
 	<body class="is-preload">
 
 		<!-- Wrapper -->
-			<div id="wrapper">
-
-				<!-- Header -->
-					<header id="header">
-						<a href="index.html" class="logo">Gopal Rawat</a>
+		<div id="wrapper">
+			<!-- Header -->
+			<header id="header" style="background:transparent;box-shadow:none;">
+				<a href="index.html" class="logo" style="font-size:1.3em;font-weight:900;color:var(--blue);letter-spacing:-1px;">Gopal Rawat</a>
+			</header>
+			<!-- Nav -->
+			<nav id="nav" style="background:transparent;box-shadow:none;">
+				<ul class="links">
+					<li class="active"><a class="scrolly" href="#about">About me</a></li>
+					<li><a class="scrolly" href="#experience">Experience</a></li>
+					<li><a class="scrolly" href="#tech">Tech Stack</a></li>
+					<li><a class="scrolly" href="#resume">Resume</a></li>
+					<li><a class="scrolly" href="#projects">Projects</a></li>
+					<li><a class="scrolly" href="#tableau">Tableau</a></li>
+					<li><a class="scrolly" href="#contact">Contact Me</a></li>
+				</ul>
+				<ul class="icons">
+					<li><a href="https://linkedin.com/in/gopalrawat/" class="icon brands alt fa-linkedin"><span class="label">linkedin</span></a></li>
+					<li><a href="https://github.com/gopalrawat14" class="icon brands alt fa-github"><span class="label">GitHub</span></a></li>
+				</ul>
+			</nav>
+			<!-- Main -->
+			<div id="main">
+				<!-- Hero Section -->
+				<section class="section-block hero-section" style="--section-bg: var(--yellow); position: relative; margin-top:32px;">
+					<div class="hero-bg-blob"></div>
+					<div class="blob blob1"></div>
+					<div class="blob blob2"></div>
+					<div style="display: flex; align-items: flex-end; gap: 0; flex-wrap: wrap; position:relative; z-index:1;">
+						<div style="flex:2; min-width:260px; display:flex; flex-direction:column; justify-content:flex-end;">
+							<h1 class="hero-title" style="font-size:4.5rem; font-weight:900; color:#222; letter-spacing:-2px; margin-bottom:0.3em; line-height:1.05; text-align:left;">Gopal Rawat</h1>
+							<p class="hero-tagline" style="font-size:1.7rem; color:var(--blue); font-weight:700; margin-bottom:1.2em; text-align:left;">AI & ML-driven Data Analysis</p>
+							<div class="about-hero" style="font-size:1.25em; color:#222; font-weight:500; margin-bottom:2em; max-width:480px; text-align:left;">
+								I work at the intersection of <span class="highlight" style="color:var(--pink);font-weight:700;">data</span>, <span class="highlight" style="color:var(--blue);font-weight:700;">product</span>, and <span class="highlight" style="color:var(--orange);font-weight:700;">business</span> — where messy information turns into clear decisions.
+							</div>
+						</div>
+						<div style="flex:1; min-width:180px; display:flex; flex-direction:column; align-items:flex-end; justify-content:flex-end;">
+							<div class="hero-profile" style="transform:rotate(-6deg); box-shadow:0 4px 24px rgba(255,61,166,0.18); background:var(--pink); border-radius:32px; padding:8px; margin-bottom:0; margin-right:-40px;">
+								<img src="images/gopal.jpg" alt="Gopal Rawat" style="width: 180px; border-radius: 32px;" />
+							</div>
+						</div>
+					</div>
+				</section>
+				<!-- About (top) -->
+				<section id="about" class="section-block" style="--section-bg: #fff;">
+					<header class="major" style="margin-bottom:3.5em;">
+						<h2 class="section-title" style="text-align:left;">About Me</h2>
 					</header>
-
-				<!-- Nav -->
-					<nav id="nav">
-						<ul class="links">
-							<li class="active"><a class="scrolly" href="#about">About me</a></li>
-							<li><a class="scrolly" href="#experience">Experience</a></li>
-							<li><a class="scrolly" href="#tech">Tech Stack</a></li>
-							<li><a class="scrolly" href="#resume">Resume</a></li>
-							<li><a class="scrolly" href="#projects">Projects</a></li>
-							<li><a class="scrolly" href="#tableau">Tableau</a></li>
-							<li><a class="scrolly" href="#contact">Contact Me</a></li>
-						</ul>
-						<ul class="icons">
-							
-									<li><a href="https://linkedin.com/in/gopalrawat/" class="icon brands alt fa-linkedin"><span class="label">linkedin</span></a></li>
-									<li><a href="https://github.com/gopalrawat14" class="icon brands alt fa-github"><span class="label">GitHub</span></a></li>
-						</ul>
-					</nav>
-
-				<!-- Main -->
-					<div id="main">
-
-						<!-- About (top) -->
-						<section id="about" class="post">
-							<header class="major">
-								<h1>Gopal Rawat</h1>
-							</header>
-							<div class="about-container">
-								<!-- Hero Statement -->
-								<div class="about-hero">
-									<p>I work at the intersection of <span class="highlight">data</span>, <span class="highlight">product</span>, and <span class="highlight">business</span> — where messy information turns into clear decisions.</p>
-								</div>
-
-								<!-- Three Pillars -->
-								<div class="about-pillars">
-									<div class="pillar">
-										<div class="pillar-icon">📊</div>
-										<h4>Core Strength</h4>
-										<p>Translating numbers into narratives. Understanding users, markets, and operations through data, then shaping insight into product improvements, growth strategies, and execution plans.</p>
-									</div>
-									
-									<div class="pillar">
-										<div class="pillar-icon">🎯</div>
-										<h4>What I Enjoy</h4>
-										<p>Solving ambiguous problems. Breaking them down, finding leverage points, aligning stakeholders, and owning outcomes end-to-end with ownership, curiosity, and accountability.</p>
-									</div>
-									
-									<div class="pillar">
-										<div class="pillar-icon">🚀</div>
-										<h4>What I Care About</h4>
-										<p>How things work in the real world. I communicate clearly, execute relentlessly, and build things that scale, learn, and improve at every step.</p>
-									</div>
-								</div>
-
-								<!-- Tagline -->
-								<div class="about-tagline">
-									<div class="tagline-item">
-										<span class="tagline-label">Data</span>
-										<span class="tagline-text">is my tool</span>
-									</div>
-									<div class="tagline-divider">•</div>
-									<div class="tagline-item">
-										<span class="tagline-label">Product</span>
-										<span class="tagline-text">is my playground</span>
-									</div>
-									<div class="tagline-divider">•</div>
-									<div class="tagline-item">
-										<span class="tagline-label">Growth</span>
-										<span class="tagline-text">is the outcome</span>
-									</div>
+					<div class="about-mental-model" style="display:flex; flex-direction:column; align-items:center; gap:0; position:relative;">
+						<!-- Mental Model Flow: vertical, expressive spacing, subtle motion -->
+						<div class="pillar-sequence" style="width:100%; max-width:640px; margin:0 auto; display:flex; flex-direction:column; gap:36px;">
+							<div class="pillar-system" style="position:relative;">
+								<div class="pillar-card" style="background:#fff; border-radius:32px; box-shadow:0 8px 32px rgba(58,134,255,0.10); padding:2.2em 2em 2em 2em; margin-bottom:0; margin-top:0; transition:box-shadow 0.3s, transform 0.3s; will-change:transform;">
+									<div class="pillar-icon" style="font-size:2.2em; margin-bottom:0.7em;">📊</div>
+									<h4 style="font-size:1.25em;font-weight:900;margin-bottom:0.5em;">Core Strength</h4>
+									<p style="font-size:1.08em; color:#222;">Translating numbers into narratives. Understanding users, markets, and operations through data, then shaping insight into product improvements, growth strategies, and execution plans.</p>
 								</div>
 							</div>
-						</section>
-							<div class="image main" style="max-width: 300px; margin: 0 auto; position: relative;">
-								<img src="images/gopal.jpg" alt="Gopal Rawat" style="width: 100%; height: 100%; object-fit: cover;" />
+							<div class="pillar-system" style="position:relative;">
+								<div class="pillar-card" style="background:#fff; border-radius:32px; box-shadow:0 8px 32px rgba(255,61,166,0.10); padding:2.2em 2em 2em 2em; margin-bottom:0; margin-top:0; transition:box-shadow 0.3s, transform 0.3s; will-change:transform;">
+									<div class="pillar-icon" style="font-size:2.2em; margin-bottom:0.7em;">🎯</div>
+									<h4 style="font-size:1.25em;font-weight:900;margin-bottom:0.5em;">What I Enjoy</h4>
+									<p style="font-size:1.08em; color:#222;">Solving ambiguous problems. Breaking them down, finding leverage points, aligning stakeholders, and owning outcomes end-to-end with ownership, curiosity, and accountability.</p>
+								</div>
 							</div>
-						</section>
-
+							<div class="pillar-system" style="position:relative;">
+								<div class="pillar-card" style="background:#fff; border-radius:32px; box-shadow:0 8px 32px rgba(255,61,166,0.10); padding:2.2em 2em 2em 2em; margin-bottom:0; margin-top:0; transition:box-shadow 0.3s, transform 0.3s; will-change:transform;">
+									<div class="pillar-icon" style="font-size:2.2em; margin-bottom:0.7em;">🚀</div>
+									<h4 style="font-size:1.25em;font-weight:900;margin-bottom:0.5em;">What I Care About</h4>
+									<p style="font-size:1.08em; color:#222;">How things work in the real world. I communicate clearly, execute relentlessly, and build things that scale, learn, and improve at every step.</p>
+								</div>
+							</div>
+						</div>
+						<!-- Philosophy Loop: Data • Product • Growth as a system -->
+						<div class="about-philosophy-loop" style="margin:3.5em auto 0 auto; display:flex; flex-direction:column; align-items:center;">
+							<div style="width:100%; max-width:640px; margin:0 auto; display:flex; justify-content:center; gap:32px;">
+								<div style="font-weight:900; color:var(--orange); font-size:1.18em; background:#fff; border-radius:22px; padding:0.7em 1.6em; box-shadow:0 4px 16px rgba(255,61,166,0.10); text-align:center; flex:1; transition:box-shadow 0.3s, transform 0.3s; will-change:transform;">Data</div>
+								<div style="font-weight:900; color:var(--blue); font-size:1.18em; background:#fff; border-radius:22px; padding:0.7em 1.6em; box-shadow:0 4px 16px rgba(58,134,255,0.10); text-align:center; flex:1; transition:box-shadow 0.3s, transform 0.3s; will-change:transform;">Product</div>
+								<div style="font-weight:900; color:var(--pink); font-size:1.18em; background:#fff; border-radius:22px; padding:0.7em 1.6em; box-shadow:0 4px 16px rgba(255,61,166,0.10); text-align:center; flex:1; transition:box-shadow 0.3s, transform 0.3s; will-change:transform;">Growth</div>
+								<div style="font-weight:900; color:var(--orange); font-size:1.18em; background:#fff; border-radius:22px; padding:0.7em 1.6em; box-shadow:0 4px 16px rgba(255,61,166,0.10); text-align:center; flex:1; transition:box-shadow 0.3s, transform 0.3s; will-change:transform;">Business</div>
+							</div>
+						</div>
+					</div>
+				</section>
 						<!-- Work Experience -->
-						<section id="experience" class="post">
-							<header class="major">
-								<h2>Work Experience</h2>
-							</header>
-							<div class="experience-timeline">
-								<div class="experience-item">
-									<div class="experience-header">
-										<h3>Data Analyst</h3>
-										<p class="experience-company">Heritage Aviation Pvt. Ltd.</p>
-										<p class="experience-date">September 2024 - February 2025</p>
-									</div>
-									<div class="experience-content">
-										<p>Analyzed flight operational data and identified key performance indicators to optimize operations. Created data visualizations and reports that provided actionable insights for management decision-making. Worked with cross-functional teams to understand business requirements and translate them into data solutions.</p>
-										<ul style="margin-top: 1rem;">
-											<li>Built automated data pipelines using Python for data extraction and processing</li>
-											<li>Created interactive dashboards in Tableau for real-time monitoring of KPIs</li>
-											<li>Conducted statistical analysis to identify trends and anomalies in operational data</li>
-											<li>Presented insights and recommendations to stakeholders</li>
-										</ul>
+						<section id="experience" class="section-block">
+							<div class="section-header">
+								<h2 style="font-family: 'Poppins', 'Montserrat', sans-serif; font-size:2.2em; font-weight:900; color:#222;">Experience</h2>
+							</div>
+							<div class="experience-list" style="display:flex; flex-wrap:wrap; gap:2em; justify-content:center; position:relative;">
+								<div class="hero-bg-blob" style="top:-40px; left:10%; width:120px; height:120px; background:var(--color-yellow); opacity:0.18;"></div>
+								<div class="experience-item card" style="min-width:260px; flex:1 1 260px;">
+									<div class="exp-role" style="font-size:1.2em; font-weight:700; color:var(--color-blue);">Data Analyst</div>
+									<div class="exp-company" style="font-weight:600;">Heritage Aviation Pvt. Ltd.</div>
+									<div class="exp-duration" style="font-size:0.95em; color:var(--color-pink);">September 2024 - February 2025</div>
+									<div class="exp-desc">Analyzed flight operational data and identified key performance indicators to optimize operations. Created data visualizations and reports that provided actionable insights for management decision-making. Worked with cross-functional teams to understand business requirements and translate them into data solutions.<br>
+									<ul style="margin-top: 1rem;">
+										<li>Built automated data pipelines using Python for data extraction and processing</li>
+										<li>Created interactive dashboards in Tableau for real-time monitoring of KPIs</li>
+										<li>Conducted statistical analysis to identify trends and anomalies in operational data</li>
+										<li>Presented insights and recommendations to stakeholders</li>
+									</ul>
 									</div>
 								</div>
 							</div>
 						</section>
 
 						<!-- Tech Stack -->
-						<section id="tech" class="post">
-							<header class="major">
-								<h2>Tech Stack</h2>
-								<p>The tools and technologies I use to turn data into insights</p>
-							</header>
-							<div class="tech-container">
+						<section id="tech" class="section-block">
+							<div class="section-header">
+								<h2 style="font-family: 'Poppins', 'Montserrat', sans-serif; font-size:2.2em; font-weight:900; color:#222;">Tech Stack</h2>
+								<p style="font-size:1.1em; color:var(--color-blue);">The tools and technologies I use to turn data into insights</p>
+							</div>
+							<div class="tech-container" style="display:flex; flex-wrap:wrap; gap:1.5em; justify-content:center; position:relative;">
+								<div class="hero-bg-blob" style="top:-30px; left:5%; width:90px; height:90px; background:var(--color-blue); opacity:0.15;"></div>
 								<!-- Programming Languages -->
-								<div class="tech-item" id="python">
+								<div class="tech-item card" id="python" style="min-width:120px; flex:1 1 120px; font-weight:700; color:var(--color-pink);">
 									<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python">
 									<span>Python</span>
 								</div>
-								<div class="tech-item" id="cpp">
+								<div class="tech-item card" id="cpp" style="min-width:120px; flex:1 1 120px; font-weight:700; color:var(--color-yellow);">
 									<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-original.svg" alt="C++">
 									<span>C++</span>
 								</div>
-								<div class="tech-item" id="shell">
+								<div class="tech-item card" id="shell" style="min-width:120px; flex:1 1 120px; font-weight:700; color:var(--color-orange);">
 									<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bash/bash-original.svg" alt="Shell">
 									<span>Shell Scripting</span>
 								</div>
 
 								<!-- Data Science & ML -->
-								<div class="tech-item" id="pandas">
+								<div class="tech-item card" id="pandas" style="min-width:120px; flex:1 1 120px; font-weight:700; color:var(--color-blue);">
 									<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pandas/pandas-original.svg" alt="Pandas">
 									<span>Pandas</span>
 								</div>
-								<div class="tech-item" id="numpy">
+								<div class="tech-item card" id="numpy" style="min-width:120px; flex:1 1 120px; font-weight:700; color:var(--color-accent);">
 									<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/numpy/numpy-original.svg" alt="NumPy">
 									<span>NumPy</span>
 								</div>
-								<div class="tech-item" id="sklearn">
+								<div class="tech-item card" id="sklearn" style="min-width:120px; flex:1 1 120px; font-weight:700; color:var(--color-pink);">
 									<img src="https://upload.wikimedia.org/wikipedia/commons/0/05/Scikit_learn_logo_small.svg" alt="Scikit-learn">
 									<span>Scikit-learn</span>
 								</div>
-								<div class="tech-item" id="jupyter">
+								<div class="tech-item card" id="jupyter" style="min-width:120px; flex:1 1 120px; font-weight:700; color:var(--color-yellow);">
 									<img src="https://upload.wikimedia.org/wikipedia/commons/3/38/Jupyter_logo.svg" alt="Jupyter">
 									<span>Jupyter</span>
 								</div>
 
 								<!-- Big Data & Cloud -->
-								<div class="tech-item" id="hadoop">
+								<div class="tech-item card" id="hadoop" style="min-width:120px; flex:1 1 120px; font-weight:700; color:var(--color-orange);">
 									<img src="https://cdn.worldvectorlogo.com/logos/hadoop.svg" alt="Hadoop">
 									<span>Hadoop</span>
 								</div>
-								<div class="tech-item" id="spark">
+								<div class="tech-item card" id="spark" style="min-width:120px; flex:1 1 120px; font-weight:700; color:var(--color-blue);">
 									<img src="https://upload.wikimedia.org/wikipedia/commons/f/f3/Apache_Spark_logo.svg" alt="Spark">
 									<span>Spark</span>
 								</div>
-								<div class="tech-item" id="hive">
+								<div class="tech-item card" id="hive" style="min-width:120px; flex:1 1 120px; font-weight:700; color:var(--color-accent);">
 									<img src="https://www.vectorlogo.zone/logos/apache_hive/apache_hive-icon.svg" alt="Hive">
 									<span>Hive</span>
 								</div>
-								<div class="tech-item" id="kafka">
+								<div class="tech-item card" id="kafka" style="min-width:120px; flex:1 1 120px; font-weight:700; color:var(--color-pink);">
 									<img src="https://cdn.worldvectorlogo.com/logos/kafka.svg" alt="Kafka">
 									<span>Kafka</span>
 								</div>
 
 								<!-- Visualization -->
-								<div class="tech-item" id="tableau">
+								<div class="tech-item card" id="tableau" style="min-width:120px; flex:1 1 120px; font-weight:700; color:var(--color-yellow);">
 									<img src="https://cdn.worldvectorlogo.com/logos/tableau-software.svg" alt="Tableau">
 									<span>Tableau</span>
 								</div>
-								<div class="tech-item" id="matplotlib">
+								<div class="tech-item card" id="matplotlib" style="min-width:120px; flex:1 1 120px; font-weight:700; color:var(--color-orange);">
 									<img src="https://upload.wikimedia.org/wikipedia/commons/8/84/Matplotlib_icon.svg" alt="Matplotlib">
 									<span>Matplotlib</span>
 								</div>
-								<div class="tech-item" id="seaborn">
+								<div class="tech-item card" id="seaborn" style="min-width:120px; flex:1 1 120px; font-weight:700; color:var(--color-blue);">
 									<img src="https://seaborn.pydata.org/_images/logo-mark-lightbg.svg" alt="Seaborn">
 									<span>Seaborn</span>
 								</div>
 
 								<!-- DevOps & Tools -->
-								<div class="tech-item" id="git">
+								<div class="tech-item card" id="git" style="min-width:120px; flex:1 1 120px; font-weight:700; color:var(--color-accent);">
 									<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" alt="Git">
 									<span>Git</span>
 								</div>
-								<div class="tech-item" id="github">
+								<div class="tech-item card" id="github" style="min-width:120px; flex:1 1 120px; font-weight:700; color:var(--color-pink);">
 									<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" alt="GitHub Actions">
 									<span>GitHub Actions</span>
 								</div>
-								<div class="tech-item" id="linux">
+								<div class="tech-item card" id="linux" style="min-width:120px; flex:1 1 120px; font-weight:700; color:var(--color-yellow);">
 									<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linux/linux-original.svg" alt="Linux">
 									<span>Linux/Unix</span>
 								</div>
 
 								<!-- Cloud -->
-								<div class="tech-item" id="aws">
+								<div class="tech-item card" id="aws" style="min-width:120px; flex:1 1 120px; font-weight:700; color:var(--color-orange);">
 									<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA0OCA0OCI+PHBhdGggZmlsbD0iI2ZmOTkwMCIgZD0iTTI5LjMgMzEuM2MtLjMgMC0uNi0uMS0uOC0uMy0uNC0uNC0uNC0xIDAtMS40bDQuNS00LjUtNC41LTQuNWMtLjQtLjQtLjQtMSAwLTEuNC40LS40IDEtLjQgMS40IDBsNS4yIDUuMmMuNC40LjQgMSAwIDEuNGwtNS4yIDUuMmMtLjIuMi0uNS4zLS44LjN6Ii8+PHBhdGggZmlsbD0iI2ZmOTkwMCIgZD0iTTQzLjIgMjQuNWMwLS4zLS4xLS42LS4zLS44bC01LjItNS4yYy0uNC0uNC0xLS40LTEuNCAwLS40LjQtLjQgMSAwIDEuNGw0LjUgNC41LTQuNSA0LjVjLS40LjQtLjQgMSAwIDEuNC4yLjIuNS4zLjguMy4zIDAgLjYtLjEuOC0uM2w1LjItNS4yYy4yLS4yLjMtLjUuMy0uOHoiLz48cGF0aCBmaWxsPSIjMjMxZjIwIiBkPSJNMzggMTIuOGMtLjUgMC0uOS40LS45Ljl2MjAuNmMwIC41LjQuOS45LjkuNSAwIC45LS40LjktLjlWMTMuN2MwLS41LS40LS45LS45LS45eiIvPjxwYXRoIGZpbGw9IiMyMzFmMjAiIGQ9Ik0xMCAxMi44Yy0uNSAwLS45LjQtLjkuOXYyMC42YzAgLjUuNC45LjkuOS41IDAgLjktLjQuOS0uOVYxMy43YzAtLjUtLjQtLjktLjktLjl6Ii8+PHBhdGggZmlsbD0iI2ZmOTkwMCIgZD0iTTI0IDQwYy04LjggMC0xNi03LjItMTYtMTZzNy4yLTE2IDE2LTE2IDE2IDcuMiAxNiAxNi03LjIgMTYtMTYgMTZ6bTAtMzBtLTcuNyAwLTE0IDYuMy0xNCAxNHM2LjMgMTQgMTQgMTQgMTQtNi4zIDE0LTE0UzMxLjcgMTAgMjQgMTB6Ii8+PC9zdmc+" alt="AWS">
 									<span>AWS</span>
 								</div>
 
 								<!-- Database -->
-								<div class="tech-item" id="sql">
+								<div class="tech-item card" id="sql" style="min-width:120px; flex:1 1 120px; font-weight:700; color:var(--color-blue);">
 									<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA0OCA0OCIgZmlsbD0iI2Y4OTgxZCI+PHBhdGggZD0iTTM3LjUgMTRoLTI3Yy0xLjkzIDAtMy41IDEuNTctMy41IDMuNXYxM2MwIDEuOTMgMS41NyAzLjUgMy41IDMuNWgyN2MxLjkzIDAgMy41LTEuNTcgMy41LTMuNXYtMTNjMC0xLjkzLTEuNTctMy41LTMuNS0zLjV6bS0yNyAyaDI3YzAuODI3IDAgMS41IDAuNjczIDEuNSAxLjV2Mi41aC0zMHYtMi41YzAtMC44MjcgMC42NzMtMS41IDEuNS0xLjV6bTI3IDE2aC0yN2MtMC44MjcgMC0xLjUtMC42NzMtMS41LTEuNXYtOC41aDMwdjguNWMwIDAuODI3LTAuNjczIDEuNS0xLjUgMS41eiIvPjwvc3ZnPg==" alt="SQL">
 									<span>SQL</span>
 								</div>
 
 								<!-- Business Tools -->
-								<div class="tech-item" id="excel">
+								<div class="tech-item card" id="excel" style="min-width:120px; flex:1 1 120px; font-weight:700; color:var(--color-accent);">
 									<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA0OCA0OCIgZmlsbD0iIzIxNzM0NiI+PHBhdGggZD0iTTM5IDhoLTMwYy0xLjEwNCAwLTIgMC44OTYtMiAydjI4YzAgMS4xMDQgMC44OTYgMiAyIDJoMzBjMS4xMDQgMCAyLTAuODk2IDItMnYtMjhjMC0xLjEwNC0wLjg5Ni0yLTItMnptLTMwIDJoMzB2NGgtMzB2LTR6bTMwIDI4aC0zMHYtMjJoMzB2MjJ6Ii8+PHBhdGggZD0iTTMyIDI2aC00di00aDR2NHptLTYgMGgtNHYtNGg0djR6bS02IDBoLTR2LTRoNHY0em0tNiAwaC00di00aDR2NHptMTggNGgtNHYtNGg0djR6bS02IDBoLTR2LTRoNHY0em0tNiAwaC00di00aDR2NHptLTYgMGgtNHYtNGg0djR6Ii8+PC9zdmc+" alt="Excel">
 									<span>Excel</span>
 								</div>
@@ -373,141 +451,162 @@
 							</section>
 
 							<!-- Resume -->
-							<section id="resume" class="post">
-								<header class="major">
-									<h2>Resume</h2>
-								</header>
-								<div class="resume-summary" style="text-align: center; max-width:800px; margin:0 auto;">
-									<div style="margin-top: 1.5em;">
-										<a href="resume.html" class="button primary large" style="display: inline-block;">View Resume</a>
-										<a href="https://drive.google.com/file/d/1HrJaQVthjNIwQVbiL2ydmDt9MJwAyvaT/view" class="button" target="_blank" style="display: inline-block; margin-left: 0.8em;">Download PDF</a>
+							<section id="resume" class="section-block">
+								<div class="section-header" style="position:relative; z-index:2;">
+									<h2 style="font-family: 'Poppins', 'Montserrat', sans-serif; font-size:2.4em; font-weight:900; color:var(--color-yellow); letter-spacing:-1px;">Resume</h2>
+									<div class="hero-bg-blob" style="top:-50px; left:-40px; width:120px; height:120px; background:var(--color-pink); opacity:0.18; position:absolute; z-index:-1; filter:blur(2px);"></div>
+									<div class="hero-bg-blob" style="top:10px; right:-60px; width:80px; height:80px; background:var(--color-blue); opacity:0.13; position:absolute; z-index:-1; filter:blur(2px);"></div>
+								</div>
+								<div class="resume-summary" style="text-align: center; max-width:800px; margin:0 auto; position:relative;">
+									<div style="margin-top: 2.2em; display:flex; justify-content:center; gap:1.4em; flex-wrap:wrap;">
+										<a href="https://drive.google.com/file/d/1YFU_3x9D72nngRFV0KXehLkxHb_x9gsv/view?usp=sharing" class="button primary large resume-btn" target="_blank">View Resume</a>
+										<a href="https://drive.google.com/file/d/1YFU_3x9D72nngRFV0KXehLkxHb_x9gsv/view?usp=sharing" class="button resume-btn" target="_blank">Download PDF</a>
 									</div>
 								</div>
 							</section>
 
 							<!-- Projects -->
-							<section id="projects" class="post">
-								<header class="major">
-									<h2>Projects</h2>
-								</header>
-
-								<!-- Featured -->
-								<article class="post featured">
-									<header>
-										<h2><a href="https://github.com/gopalrawat14/Strategic-Supplier-Analysis-for-Business-Growth--python-sql-tableau">Strategic Supplier Analysis for Business Growth</a></h2>
-										<p>In the fast-paced retail industry, efficient inventory and supplier management can make the difference between profit and loss. This project dives deep into supplier performance, sales trends, and inventory dynamics to uncover actionable insights that drive smarter business decisions. By leveraging SQL for data extraction, Python for advanced analytics, and Tableau for interactive dashboards, the project identifies high-performing suppliers, highlights cost-saving opportunities through bulk purchasing, detects slow-moving inventory, and recommends strategies to optimize profitability. The result is a data-driven roadmap for retail teams to reduce risk, maximize supplier efficiency, and enhance overall business growth — all presented through a visually intuitive and interactive dashboard.</p>
-									</header>
-									<a href="https://github.com/gopalrawat14/Strategic-Supplier-Analysis-for-Business-Growth--python-sql-tableau" class="image fit"><img src="images/pic01.jpg" alt="" /></a>
-									<ul class="actions special">
-										<li><a href="https://github.com/gopalrawat14/Strategic-Supplier-Analysis-for-Business-Growth--python-sql-tableau" class="button large">View Project</a></li>
-									</ul>
-								</article>
-
-								<section class="posts">
-									<article>
+							<section id="projects" class="section-block">
+								<div class="section-header">
+									<h2 style="font-family: 'Poppins', 'Montserrat', sans-serif; font-size:2.2em; font-weight:900; color:#222;">Projects</h2>
+								</div>
+								<div class="projects-list" style="display:flex; flex-wrap:wrap; gap:2em; justify-content:center; position:relative;">
+									<div class="hero-bg-blob" style="top:-40px; left:10%; width:120px; height:120px; background:var(--color-yellow); opacity:0.18; position:absolute;"></div>
+									<!-- Featured -->
+									<div class="project-card card" style="max-width:370px;">
 										<header>
-											<h2><a href="https://github.com/gopalrawat14/Unlocking_Hotel_Bookings_Data">Unlocking Hotel Bookings Data</a></h2>
+											<h3 style="font-size:1.25em; font-weight:900; color:var(--color-pink);"><a href="https://github.com/gopalrawat14/Campus-Dining-Case-Study">Disrupting India’s Campus Dining Ecosystem</a></h3>
+											<p style="font-size:1em; color:var(--color-blue);">An independent strategy and creative project exploring India’s overlooked campus dining ecosystem, serving billions of meals annually.<br>
+							I researched public education data, analyzed operational gaps, and built a market-backed case study outlining how food-tech platforms like Zomato and Swiggy could modernize this space.<br>
+							The project combined data analysis, consumer insight, and storytelling to translate a complex system into a clear, compelling narrative.<br>
+							I published the work publicly, where it gained strong engagement from students, professionals, and industry leaders.<br>
+							This project reflects my ability to identify real-world problems, think strategically, and communicate ideas creatively.</p>
 										</header>
-										<a href="https://github.com/gopalrawat14/Unlocking_Hotel_Bookings_Data" class="image fit"><img src="images/pic02.jpg" alt="" /></a>
-										<p>Turning hotel booking chaos into actionable insights. This project dives deep into cancellation trends, pricing patterns, and seasonal behaviors across City and Resort Hotels, uncovering strategies to boost occupancy, optimize revenue, and transform data into smarter business decisions.</p>
-										<ul class="actions special"><li><a href="https://github.com/gopalrawat14/Unlocking_Hotel_Bookings_Data" class="button">View Project</a></li></ul>
-									</article>
-									<article>
+										<a href="https://github.com/gopalrawat14/Campus-Dining-Case-Study" class="image fit"><img src="images/mess.jpg" alt="Disrupting India’s Campus Dining Ecosystem" style="border-radius:1.2em;" /></a>
+										<ul class="actions special">
+											<li><a href="https://github.com/gopalrawat14/Campus-Dining-Case-Study" class="button large" style="background:var(--color-yellow); color:var(--color-blue); font-weight:700; border-radius:2em;">View Project</a></li>
+										</ul>
+									</div>
+									<div class="project-card card" style="max-width:370px; background:#fff; border-radius:2em; box-shadow:0 6px 32px rgba(58,134,255,0.08); padding:2em 1.2em 1.2em 1.2em; margin-bottom:1.2em; display:flex; flex-direction:column; gap:1.1em;">
 										<header>
-											<h2><a href="https://github.com/gopalrawat14/Employee-Attrition-in-a-Company">HR Insights Lab</a></h2>
+											<h3 style="font-size:1.25em; font-weight:900; color:var(--color-orange);"><a href="https://github.com/gopalrawat14/Strategic-Supplier-Analysis-for-Business-Growth--python-sql-tableau">Strategic Supplier Analysis - Retail Inventory & Sale</a></h3>
+											<p style="font-size:1em; color:var(--color-blue);">In the fast-paced retail industry, efficient inventory and supplier management can make the difference between profit and loss. This project dives deep into supplier performance, sales trends, and inventory dynamics to uncover actionable insights that drive smarter business decisions. By leveraging SQL for data extraction, Python for advanced analytics, and Tableau for interactive dashboards, the project identifies high-performing suppliers, highlights cost-saving opportunities through bulk purchasing, detects slow-moving inventory, and recommends strategies to optimize profitability. The result is a data-driven roadmap for retail teams to reduce risk, maximize supplier efficiency, and enhance overall business growth — all presented through a visually intuitive and interactive dashboard.</p>
 										</header>
-										<a href="https://github.com/gopalrawat14/Employee-Attrition-in-a-Company" class="image fit"><img src="images/pic03.jpg" alt="" /></a>
-										<p>Leveraging data science to uncover the underlying causes of employee turnover, this project applies predictive modeling and exploratory analysis to identify key factors influencing retention. Through comprehensive data preprocessing, feature engineering, and visualization, it provides actionable insights to help organizations enhance employee satisfaction and reduce attrition rates</p>
-										<ul class="actions special"><li><a href="https://github.com/gopalrawat14/Employee-Attrition-in-a-Company" class="button">View Project</a></li></ul>
-									</article>
-									<article>
+										<a href="https://github.com/gopalrawat14/Strategic-Supplier-Analysis-for-Business-Growth--python-sql-tableau" class="image fit"><img src="images/pic01.jpg" alt="" style="border-radius:1.2em;" /></a>
+										<ul class="actions special">
+											<li><a href="https://github.com/gopalrawat14/Strategic-Supplier-Analysis-for-Business-Growth--python-sql-tableau" class="button large" style="background:var(--color-orange); color:#fff; font-weight:700; border-radius:2em;">View Project</a></li>
+										</ul>
+									</div>
+									<!-- More projects -->
+									<div class="project-card card" style="max-width:370px; background:#fff; border-radius:2em; box-shadow:0 6px 32px rgba(58,134,255,0.08); padding:2em 1.2em 1.2em 1.2em; margin-bottom:1.2em; display:flex; flex-direction:column; gap:1.1em;">
 										<header>
-											<h2><a href="https://github.com/gopalrawat14/Zomato-sales-analysis">Zomato Sales Insights Lab</a></h2>
+											<h3 style="font-size:1.25em; font-weight:900; color:var(--color-yellow);"><a href="https://github.com/gopalrawat14/Unlocking_Hotel_Bookings_Data">Unlocking Hotel Bookings Data</a></h3>
 										</header>
-										<a href="https://github.com/gopalrawat14/Zomato-sales-analysis" class="image fit"><img src="images/pic04.jpg" alt="" /></a>
-										<p>Decoding Zomato’s sales patterns through data-driven insights—transforming raw transaction data into actionable strategies, uncovering trends, customer behaviors, and payment dynamics that drive smarter business decisions.</p>
-										<ul class="actions special"><li><a href="https://github.com/gopalrawat14/Zomato-sales-analysis" class="button">View Project</a></li></ul>
-									</article>
-									<article>
+										<a href="https://github.com/gopalrawat14/Unlocking_Hotel_Bookings_Data" class="image fit"><img src="images/pic02.jpg" alt="" style="border-radius:1.2em;" /></a>
+										<p style="font-size:1em; color:var(--color-blue);">Turning hotel booking chaos into actionable insights. This project dives deep into cancellation trends, pricing patterns, and seasonal behaviors across City and Resort Hotels, uncovering strategies to boost occupancy, optimize revenue, and transform data into smarter business decisions.</p>
+										<ul class="actions special"><li><a href="https://github.com/gopalrawat14/Unlocking_Hotel_Bookings_Data" class="button" style="background:var(--color-yellow); color:var(--color-blue); font-weight:700; border-radius:2em;">View Project</a></li></ul>
+									</div>
+									<div class="project-card card" style="max-width:370px;">
 										<header>
-											<h2><a href="https://github.com/gopalrawat14/Revenue-Radar-tableau-dashboard">Revenue Radar Dashboard</a></h2>
+											<h3 style="font-size:1.25em; font-weight:900; color:var(--color-blue);"><a href="https://github.com/gopalrawat14/Employee-Attrition-in-a-Company">HR Insights Lab</a></h3>
 										</header>
-										<a href="https://github.com/gopalrawat14/Revenue-Radar-tableau-dashboard" class="image fit"><img src="images/pic05.jpg" alt="" /></a>
-										<p>A dynamic Tableau dashboard that transforms raw sales data into actionable insights. By visualizing key metrics such as revenue, order volume, and customer behavior, this interactive dashboard empowers business teams to make informed decisions and drive growth.</p>
-										<ul class="actions special"><li><a href="https://github.com/gopalrawat14/Revenue-Radar-tableau-dashboard" class="button">View Project</a></li></ul>
-									</article>
-									<article>
+										<a href="https://github.com/gopalrawat14/Employee-Attrition-in-a-Company" class="image fit"><img src="images/pic03.jpg" alt="" style="border-radius:1.2em;" /></a>
+										<p style="font-size:1em; color:var(--color-blue);">Leveraging data science to uncover the underlying causes of employee turnover, this project applies predictive modeling and exploratory analysis to identify key factors influencing retention. Through comprehensive data preprocessing, feature engineering, and visualization, it provides actionable insights to help organizations enhance employee satisfaction and reduce attrition rates</p>
+										<ul class="actions special"><li><a href="https://github.com/gopalrawat14/Employee-Attrition-in-a-Company" class="button" style="background:var(--color-blue); color:#fff; font-weight:700; border-radius:2em;">View Project</a></li></ul>
+									</div>
+									<div class="project-card card" style="max-width:370px;">
 										<header>
-											<h2><a href="https://github.com/gopalrawat14/Heisenberg-Breaking-Bad-Analytics-Tableau-Dashboard">Heisenberg Breaking Bad Analytics</a></h2>
+											<h3 style="font-size:1.25em; font-weight:900; color:var(--color-accent);"><a href="https://github.com/gopalrawat14/Zomato-sales-analysis">Zomato Sales Insights Lab</a></h3>
 										</header>
-										<a href="https://github.com/gopalrawat14/Heisenberg-Breaking-Bad-Analytics-Tableau-Dashboard" class="image fit"><img src="images/pic06.jpg" alt="" /></a>
-										<p>An interactive Tableau dashboard that transforms raw episode data from the iconic TV series Breaking Bad into compelling visual narratives. This project delves into viewership trends, episode ratings, character appearances, and more, offering fans and analysts a data-driven exploration of the series.</p>
-										<ul class="actions special"><li><a href="https://github.com/gopalrawat14/Heisenberg-Breaking-Bad-Analytics-Tableau-Dashboard" class="button">View Project</a></li></ul>
-									</article>
-									<article>
+										<a href="https://github.com/gopalrawat14/Zomato-sales-analysis" class="image fit"><img src="images/pic04.jpg" alt="" style="border-radius:1.2em;" /></a>
+										<p style="font-size:1em; color:var(--color-blue);">Decoding Zomato’s sales patterns through data-driven insights—transforming raw transaction data into actionable strategies, uncovering trends, customer behaviors, and payment dynamics that drive smarter business decisions.</p>
+										<ul class="actions special"><li><a href="https://github.com/gopalrawat14/Zomato-sales-analysis" class="button" style="background:var(--color-accent); color:#fff; font-weight:700; border-radius:2em;">View Project</a></li></ul>
+									</div>
+									<div class="project-card card" style="max-width:370px;">
 										<header>
-											<h2><a href="https://github.com/gopalrawat14/fintech-product-design-nubra">Fintech Product Design - Nubra</a></h2>
+											<h3 style="font-size:1.25em; font-weight:900; color:var(--color-pink);"><a href="https://github.com/gopalrawat14/Revenue-Radar-tableau-dashboard">Revenue Radar Dashboard</a></h3>
 										</header>
-										<a href="https://github.com/gopalrawat14/fintech-product-design-nubra" class="image fit"><img src="images/crypto-dashboard.jpeg" alt="Crypto Trading Dashboard" /></a>
-										<p>A comprehensive product design case study developed for the Nubra Product Intern role, focusing on enhancing the algorithmic trading experience. This project addresses key friction points in onboarding, strategy building, and the transition from manual to automated trading, combining product strategy, UI/UX design, and technical feasibility.</p>
-										<ul class="actions special"><li><a href="https://github.com/gopalrawat14/fintech-product-design-nubra" class="button">View Project</a></li></ul>
-									</article>
-								</section>
+										<a href="https://github.com/gopalrawat14/Revenue-Radar-tableau-dashboard" class="image fit"><img src="images/pic05.jpg" alt="" style="border-radius:1.2em;" /></a>
+										<p style="font-size:1em; color:var(--color-blue);">A dynamic Tableau dashboard that transforms raw sales data into actionable insights. By visualizing key metrics such as revenue, order volume, and customer behavior, this interactive dashboard empowers business teams to make informed decisions and drive growth.</p>
+										<ul class="actions special"><li><a href="https://github.com/gopalrawat14/Revenue-Radar-tableau-dashboard" class="button" style="background:var(--color-pink); color:#fff; font-weight:700; border-radius:2em;">View Project</a></li></ul>
+									</div>
+									<div class="project-card card" style="max-width:370px;">
+										<header>
+											<h3 style="font-size:1.25em; font-weight:900; color:var(--color-orange);"><a href="https://github.com/gopalrawat14/Heisenberg-Breaking-Bad-Analytics-Tableau-Dashboard">Heisenberg Breaking Bad Analytics</a></h3>
+										</header>
+										<a href="https://github.com/gopalrawat14/Heisenberg-Breaking-Bad-Analytics-Tableau-Dashboard" class="image fit"><img src="images/pic06.jpg" alt="" style="border-radius:1.2em;" /></a>
+										<p style="font-size:1em; color:var(--color-blue);">An interactive Tableau dashboard that transforms raw episode data from the iconic TV series Breaking Bad into compelling visual narratives. This project delves into viewership trends, episode ratings, character appearances, and more, offering fans and analysts a data-driven exploration of the series.</p>
+										<ul class="actions special"><li><a href="https://github.com/gopalrawat14/Heisenberg-Breaking-Bad-Analytics-Tableau-Dashboard" class="button" style="background:var(--color-orange); color:#fff; font-weight:700; border-radius:2em;">View Project</a></li></ul>
+									</div>
+									<div class="project-card card" style="max-width:370px;">
+										<header>
+											<h3 style="font-size:1.25em; font-weight:900; color:var(--color-blue);"><a href="https://github.com/gopalrawat14/fintech-product-design-nubra">Fintech Product Design - Nubra</a></h3>
+										</header>
+										<a href="https://github.com/gopalrawat14/fintech-product-design-nubra" class="image fit"><img src="images/crypto-dashboard.jpeg" alt="Crypto Trading Dashboard" style="border-radius:1.2em;" /></a>
+										<p style="font-size:1em; color:var(--color-blue);">A comprehensive product design case study developed for the Nubra Product Intern role, focusing on enhancing the algorithmic trading experience. This project addresses key friction points in onboarding, strategy building, and the transition from manual to automated trading, combining product strategy, UI/UX design, and technical feasibility.</p>
+										<ul class="actions special"><li><a href="https://github.com/gopalrawat14/fintech-product-design-nubra" class="button" style="background:var(--color-blue); color:#fff; font-weight:700; border-radius:2em;">View Project</a></li></ul>
+									</div>
+								</div>
+							</section>
 
 								<hr style="border: 0; border-bottom: solid 1px rgba(255, 255, 255, 0.3); margin: 4rem 0; padding: 0;" />
 
 				<!-- Tableau -->
-						<section id="tableau" class="post">
-							<header class="major">
-								<h2>My Tableau Visualizations</h2>
-								<p style="margin-bottom: 1rem;">Explore my interactive data visualizations and dashboards on Tableau Public.</p>
-								<div style="text-align: center;">
-									<a href="https://public.tableau.com/app/profile/gopal.rawat3522/vizzes" class="button primary large" target="_blank">
+						<section id="tableau" class="section-block" style="scroll-margin-top: 80px;">
+							<div class="section-header">
+								<h2 style="font-family: 'Poppins', 'Montserrat', sans-serif; font-size:2.2em; font-weight:900; color:#222;">My Tableau Visualizations</h2>
+								<p style="font-size:1.1em; color:#222; margin-bottom: 1rem;">Explore my interactive data visualizations and dashboards on Tableau Public.</p>
+								<div style="text-align: center; position:relative;">
+									<div class="hero-bg-blob" style="top:-30px; left:80%; width:90px; height:90px; background:var(--color-yellow); opacity:0.15; position:absolute;"></div>
+									<a href="https://public.tableau.com/app/profile/gopal.rawat3522/vizzes" class="button primary large" target="_blank" style="background:var(--color-blue); color:#fff; font-weight:700; border-radius:2em; box-shadow:0 2px 12px 0 rgba(0,80,255,0.12);">
 										<img src="images/tableau-logo.svg" alt="Tableau" style="height:22px; vertical-align:middle; margin-right:10px;" />
-										<span>View My Tableau Profile</span>
+										<span style="color:#111; font-weight:900; font-size:1.12em; letter-spacing:-0.5px; text-shadow:0 2px 8px rgba(0,80,255,0.10);">View My Tableau Profile</span>
 									</a>
 								</div>
-							</header>
-							</section>
+							</div>
+						</section>
 
 							<hr style="border: 0; border-bottom: solid 1px rgba(255, 255, 255, 0.3); margin: 4rem 0; padding: 0;" />
 
 				<!-- Contact -->
-					<section id="contact" class="post">
-						<header class="major">
-							<h2>Contact Me</h2>
-							<p>Feel free to reach out. I'm always open to discussing new opportunities and collaborations.</p>
-						</header>
-					</section>
+				<section id="contact" class="section-block">
+					<div class="section-header" style="text-align:center; position:relative;">
+						<h2 style="font-family: 'Poppins', 'Montserrat', sans-serif; font-size:2.2em; font-weight:900; color:#222;">Contact Me</h2>
+						<p style="font-size:1.1em; color:#222;">Feel free to reach out. I'm always open to discussing new opportunities and collaborations.</p>
+						<div class="hero-bg-blob" style="top:-30px; left:10%; width:90px; height:90px; background:var(--color-pink); opacity:0.15; position:absolute;"></div>
+					</div>
+					<div class="contact-block" style="display:grid; grid-template-columns:1fr; gap:2em; justify-content:center; align-items:stretch; max-width:400px; margin:2em auto 0 auto;">
+						<div class="contact-card" style="background:#fff; border-radius:2em; box-shadow:0 6px 32px rgba(58,134,255,0.08); padding:2em; display:flex; flex-direction:column; align-items:center; gap:0.7em;">
+							<h3 style="color:#222; font-weight:900;">Location</h3>
+							<p style="color:#222; font-weight:600;">Dehradun, 248001</p>
+						</div>
+						<div class="contact-card" style="background:#fff; border-radius:2em; box-shadow:0 6px 32px rgba(58,134,255,0.08); padding:2em; display:flex; flex-direction:column; align-items:center; gap:0.7em;">
+							<h3 style="color:#222; font-weight:900;">Phone</h3>
+							<p><a href="tel:+919410769778" style="color:#222; font-weight:600; text-decoration:none;">(+91) 9410769778</a></p>
+						</div>
+						<div class="contact-card" style="background:#fff; border-radius:2em; box-shadow:0 6px 32px rgba(255,134,58,0.08); padding:2em; display:flex; flex-direction:column; align-items:center; gap:0.7em;">
+							<h3 style="color:#222; font-weight:900;">Email</h3>
+							<p style="font-size:1.08em; font-weight:600;"><a href="mailto:gopalrawwatt@gmail.com" style="color:#222; text-decoration:none;">gopalrawwatt@gmail.com</a></p>
+						</div>
+						<div class="contact-card" style="background:#fff; border-radius:2em; box-shadow:0 6px 32px rgba(255,61,166,0.08); padding:2em; display:flex; flex-direction:column; align-items:center; gap:0.7em;">
+							<h3 style="color:#222; font-weight:900;">Social</h3>
+							<ul class="icons alt" style="display:flex; gap:1.2em; justify-content:center;">
+								<li><a href="https://linkedin.com/in/gopalrawat/" class="icon brands alt fa-linkedin" style="font-size:1.5em; color:#222; transition:color 0.2s;"><span class="label">linkedin</span></a></li>
+								<li><a href="https://github.com/gopalrawat14" class="icon brands alt fa-github" style="font-size:1.5em; color:#222; transition:color 0.2s;"><span class="label">GitHub</span></a></li>
+							</ul>
+						</div>
+					</div>
+				</section>
 
 				<!-- Footer -->
-					<footer id="footer">
-						<section class="split contact">
-							<section class="alt">
-								<h3>Location</h3>
-								<p>Dehradun, 248001</p>
-							</section>
-							<section>
-								<h3>Phone</h3>
-								<p><a href="#">(+91) 9410769778</a></p>
-							</section>
-							<section>
-								<h3>Email</h3>
-								<p><a href="#">gopalrawwatt@gmail.com</a></p>
-							</section>
-							<section>
-								<h3>Social</h3>
-								<ul class="icons alt">
-									
-									<li><a href="https://linkedin.com/in/gopalrawat/" class="icon brands alt fa-linkedin"><span class="label">linkedin</span></a></li>
-									<li><a href="https://github.com/gopalrawat14" class="icon brands alt fa-github"><span class="label">GitHub</span></a></li>
-								</ul>
-							</section>
-						</section>
-					</footer>
-
-				<!-- Copyright -->
-			</div>
+					<!-- Footer cleaned: duplicate contact details removed -->
+					<div class="footer-modern" style="width:100%; max-width:900px; margin:0 auto; text-align:center; position:relative; padding:2em 0 1.2em 0;">
+						<div class="hero-bg-blob" style="bottom:-30px; left:-40px; width:90px; height:90px; background:var(--color-yellow); opacity:0.13; position:absolute; z-index:-1; filter:blur(2px);"></div>
+						<div class="hero-bg-blob" style="bottom:10px; right:-60px; width:70px; height:70px; background:var(--color-blue); opacity:0.11; position:absolute; z-index:-1; filter:blur(2px);"></div>
+						<p style="font-family:'Poppins', 'Montserrat', sans-serif; font-size:1.08em; font-weight:700; color:var(--color-pink); letter-spacing:-0.5px; margin-bottom:0.2em;">© 2026 Gopal Rawat. All rights reserved.</p>
+						<p style="font-size:0.98em; color:#888;">Designed & built with love, data, and product thinking.</p>
+					</div>
+				</div>
 
 		<!-- Scripts -->
 			<script src="assets/js/jquery.min.js"></script>
@@ -517,6 +616,7 @@
 			<script src="assets/js/breakpoints.min.js"></script>
 			<script src="assets/js/util.js"></script>
 			<script src="assets/js/main.js"></script>
+
 
 	</body>
 </html>

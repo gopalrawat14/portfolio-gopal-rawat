@@ -1,9 +1,245 @@
+.contact-card {
+    background: #fff;
+    border-radius: 2em;
+    box-shadow: 0 6px 32px rgba(58,134,255,0.08);
+    padding: 2em 2em 1.2em 2em;
+    min-width: 220px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.7em;
+}
+/* Footer Modern Grouping & Motion */
+.footer-modern {
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto;
+    text-align: center;
+    position: relative;
+    padding: 2em 0 1.2em 0;
+}
+.footer-modern p {
+    font-family: 'Poppins', 'Montserrat', sans-serif;
+    font-size: 1.08em;
+    font-weight: 700;
+    color: var(--color-pink);
+    letter-spacing: -0.5px;
+    margin-bottom: 0.2em;
+    opacity: 0;
+    transform: translateY(32px) scale(0.98);
+    animation: footerFadeIn 0.7s cubic-bezier(.7,.2,.3,1) forwards;
+}
+.footer-modern p:nth-child(3) {
+    font-size: 0.98em;
+    color: #888;
+    font-weight: 400;
+    animation-delay: 0.2s;
+}
+@keyframes footerFadeIn {
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+/* Contact Section Modern Grouping & Motion */
+.contact-block {
+    width: 100%;
+    max-width: 700px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2.2em;
+    justify-content: center;
+    align-items: flex-start;
+    position: relative;
+    padding: 2.2em 0 1.2em 0;
+}
+.contact-card {
+    background: #fff;
+    border-radius: 2em;
+    box-shadow: 0 6px 32px rgba(58,134,255,0.08);
+    padding: 2em 2em 1.2em 2em;
+    min-width: 220px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.7em;
+    transition: box-shadow 0.3s, transform 0.3s;
+    will-change: transform;
+    opacity: 0;
+    transform: translateY(32px) scale(0.98);
+    animation: contactCardFadeIn 0.7s cubic-bezier(.7,.2,.3,1) forwards;
+}
+.contact-card:hover {
+    box-shadow: 0 12px 48px rgba(255,61,166,0.18);
+    transform: translateY(-6px) scale(1.04);
+}
+.contact-card:nth-child(1) { animation-delay: 0.1s; }
+.contact-card:nth-child(2) { animation-delay: 0.2s; }
+.contact-block .icons.alt a:hover {
+    color: var(--color-pink) !important;
+}
+@keyframes contactCardFadeIn {
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+/* Resume Section Modern Grouping & Motion */
+.section-header h2 {
+    font-family: 'Poppins', 'Montserrat', sans-serif;
+    font-size: 2.4em;
+    font-weight: 900;
+    letter-spacing: -1px;
+}
+.resume-summary {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto;
+    position: relative;
+}
+.resume-btn {
+    background: var(--color-yellow);
+    color: #222;
+    font-weight: 700;
+    border-radius: 2em;
+    box-shadow: 0 2px 12px 0 rgba(255,200,0,0.12);
+    font-size: 1.08em;
+    padding: 0.8em 2.2em;
+    margin: 0.2em 0.1em;
+    transition: box-shadow 0.3s, transform 0.3s, background 0.3s, color 0.3s;
+    will-change: transform;
+    opacity: 0;
+    transform: translateY(32px) scale(0.98);
+    animation: resumeBtnFadeIn 0.7s cubic-bezier(.7,.2,.3,1) forwards;
+}
+.resume-btn:nth-child(1) { animation-delay: 0.1s; }
+.resume-btn:nth-child(2) { background: var(--color-blue); color: #fff; box-shadow: 0 2px 12px 0 rgba(0,80,255,0.12); animation-delay: 0.2s; }
+.resume-btn:hover {
+    box-shadow: 0 8px 32px rgba(255,200,0,0.18);
+    transform: translateY(-6px) scale(1.04);
+    background: var(--color-pink);
+    color: #fff;
+}
+@keyframes resumeBtnFadeIn {
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+/* Projects Section Modern Grid & Motion */
+.projects-list {
+    display: grid !important;
+    grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+    gap: 2.8em 2em;
+    justify-items: center;
+    align-items: stretch;
+    position: relative;
+    margin-top: 2em;
+}
+.project-card {
+    background: none;
+    box-shadow: none;
+    border-radius: 0;
+    padding: 0;
+    transition: none;
+}
+.project-card-inner {
+    background: #fff;
+    border-radius: 2em;
+    box-shadow: 0 6px 32px rgba(58,134,255,0.08);
+    padding: 2em 1.2em 1.2em 1.2em;
+    display: flex;
+    flex-direction: column;
+    gap: 1.1em;
+    transition: box-shadow 0.3s, transform 0.3s;
+    will-change: transform;
+    opacity: 0;
+    transform: translateY(32px) scale(0.98);
+    animation: projectCardFadeIn 0.7s cubic-bezier(.7,.2,.3,1) forwards;
+}
+.project-card-inner:hover {
+    box-shadow: 0 12px 48px rgba(58,134,255,0.18);
+    transform: translateY(-6px) scale(1.04);
+}
+.project-card:nth-child(1) .project-card-inner { animation-delay: 0.1s; }
+.project-card:nth-child(2) .project-card-inner { animation-delay: 0.2s; }
+.project-card:nth-child(3) .project-card-inner { animation-delay: 0.3s; }
+.project-card:nth-child(4) .project-card-inner { animation-delay: 0.4s; }
+.project-card:nth-child(5) .project-card-inner { animation-delay: 0.5s; }
+@keyframes projectCardFadeIn {
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+.hero-bg-blob {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(2px);
+    z-index: -1;
+}
+/* Philosophy Loop Modern Horizontal Grouping */
+.about-philosophy-loop > div {
+    display: flex;
+    justify-content: center;
+    gap: 32px;
+    margin: 0 auto;
+    max-width: 640px;
+}
+.about-philosophy-loop > div > div {
+    font-family: 'Poppins', 'Montserrat', sans-serif;
+    font-weight: 900;
+    font-size: 1.18em;
+    background: #fff;
+    border-radius: 22px;
+    padding: 0.7em 1.6em;
+    box-shadow: 0 4px 16px rgba(58,134,255,0.10);
+    text-align: center;
+    flex: 1;
+    transition: box-shadow 0.3s, transform 0.3s;
+    will-change: transform;
+    cursor: pointer;
+    opacity: 0;
+    transform: translateY(32px) scale(0.98);
+    animation: philosophyFadeIn 0.7s cubic-bezier(.7,.2,.3,1) forwards;
+}
+.about-philosophy-loop > div > div:nth-child(1) {
+    color: var(--orange);
+    box-shadow: 0 4px 16px rgba(255,61,166,0.10);
+    animation-delay: 0.1s;
+}
+.about-philosophy-loop > div > div:nth-child(2) {
+    color: var(--blue);
+    box-shadow: 0 4px 16px rgba(58,134,255,0.10);
+    animation-delay: 0.2s;
+}
+.about-philosophy-loop > div > div:nth-child(3) {
+    color: var(--pink);
+    box-shadow: 0 4px 16px rgba(255,61,166,0.10);
+    animation-delay: 0.3s;
+}
+.about-philosophy-loop > div > div:nth-child(4) {
+    color: var(--orange);
+    box-shadow: 0 4px 16px rgba(255,61,166,0.10);
+    animation-delay: 0.4s;
+}
+.about-philosophy-loop > div > div:hover {
+    box-shadow: 0 8px 32px rgba(58,134,255,0.18);
+    transform: translateY(-6px) scale(1.04);
+}
+@keyframes philosophyFadeIn {
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Playfair+Display:wght@600;700&family=Inter:wght@300;400;500;600;700&display=swap');
 
 .image.main {
     display: block;
     margin: 2rem 0;
-    width: 60%;  /* Reduced from 100% to 60% */
+    width: 60%;
     margin-left: auto;
     margin-right: auto;
 }
