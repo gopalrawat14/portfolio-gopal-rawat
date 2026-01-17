@@ -27,16 +27,7 @@
 				font-family: 'Inter', 'Poppins', sans-serif;
 				scroll-behavior: smooth;
 			}
-			.section-block {
-				border-radius: var(--card-radius);
-				box-shadow: var(--shadow);
-				margin: 48px auto;
-				padding: 48px 32px;
-				background: var(--section-bg, #fff);
-				position: relative;
-				overflow: hidden;
-				max-width: 1100px;
-			}
+			   /* .section-block layout is now handled in main.css for consistency */
 			.hero-bg-blob {
 				position: absolute;
 				top: -80px; left: -120px;
@@ -261,88 +252,85 @@
 			<!-- Main -->
 			<div id="main">
 				<!-- Hero Section -->
-				<section class="section-block hero-section" style="--section-bg: var(--yellow); position: relative; margin-top:32px;">
-					<div class="hero-bg-blob"></div>
-					<div class="blob blob1"></div>
-					<div class="blob blob2"></div>
-					<div style="display: flex; align-items: flex-end; gap: 0; flex-wrap: wrap; position:relative; z-index:1;">
-						<div style="flex:2; min-width:260px; display:flex; flex-direction:column; justify-content:flex-end;">
-							<h1 class="hero-title" style="font-size:4.5rem; font-weight:900; color:#222; letter-spacing:-2px; margin-bottom:0.3em; line-height:1.05; text-align:left;">Gopal Rawat</h1>
-							<p class="hero-tagline" style="font-size:1.7rem; color:var(--blue); font-weight:700; margin-bottom:1.2em; text-align:left;">AI & ML-driven Data Analysis</p>
-							<div class="about-hero" style="font-size:1.25em; color:#222; font-weight:500; margin-bottom:2em; max-width:480px; text-align:left;">
-								I work at the intersection of <span class="highlight" style="color:var(--pink);font-weight:700;">data</span>, <span class="highlight" style="color:var(--blue);font-weight:700;">product</span>, and <span class="highlight" style="color:var(--orange);font-weight:700;">business</span> — where messy information turns into clear decisions.
-							</div>
-						</div>
-						<div style="flex:1; min-width:180px; display:flex; flex-direction:column; align-items:flex-end; justify-content:flex-end;">
-							<div class="hero-profile" style="transform:rotate(-6deg); box-shadow:0 4px 24px rgba(255,61,166,0.18); background:var(--pink); border-radius:32px; padding:8px; margin-bottom:0; margin-right:-40px;">
-								<img src="images/gopal.jpg" alt="Gopal Rawat" style="width: 180px; border-radius: 32px;" />
-							</div>
-						</div>
-					</div>
-				</section>
-				<!-- About (top) -->
-				<section id="about" class="section-block" style="--section-bg: #fff;">
-					<header class="major" style="margin-bottom:3.5em;">
-						<h2 class="section-title" style="text-align:left;">About Me</h2>
-					</header>
-					<div class="about-mental-model" style="display:flex; flex-direction:column; align-items:center; gap:0; position:relative;">
-						<!-- Mental Model Flow: vertical, expressive spacing, subtle motion -->
-						<div class="pillar-sequence" style="width:100%; max-width:640px; margin:0 auto; display:flex; flex-direction:column; gap:36px;">
-							<div class="pillar-system" style="position:relative;">
-								<div class="pillar-card" style="background:#fff; border-radius:32px; box-shadow:0 8px 32px rgba(58,134,255,0.10); padding:2.2em 2em 2em 2em; margin-bottom:0; margin-top:0; transition:box-shadow 0.3s, transform 0.3s; will-change:transform;">
-									<div class="pillar-icon" style="font-size:2.2em; margin-bottom:0.7em;">📊</div>
-									<h4 style="font-size:1.25em;font-weight:900;margin-bottom:0.5em;">Core Strength</h4>
-									<p style="font-size:1.08em; color:#222;">Translating numbers into narratives. Understanding users, markets, and operations through data, then shaping insight into product improvements, growth strategies, and execution plans.</p>
-								</div>
-							</div>
-							<div class="pillar-system" style="position:relative;">
-								<div class="pillar-card" style="background:#fff; border-radius:32px; box-shadow:0 8px 32px rgba(255,61,166,0.10); padding:2.2em 2em 2em 2em; margin-bottom:0; margin-top:0; transition:box-shadow 0.3s, transform 0.3s; will-change:transform;">
-									<div class="pillar-icon" style="font-size:2.2em; margin-bottom:0.7em;">🎯</div>
-									<h4 style="font-size:1.25em;font-weight:900;margin-bottom:0.5em;">What I Enjoy</h4>
-									<p style="font-size:1.08em; color:#222;">Solving ambiguous problems. Breaking them down, finding leverage points, aligning stakeholders, and owning outcomes end-to-end with ownership, curiosity, and accountability.</p>
-								</div>
-							</div>
-							<div class="pillar-system" style="position:relative;">
-								<div class="pillar-card" style="background:#fff; border-radius:32px; box-shadow:0 8px 32px rgba(255,61,166,0.10); padding:2.2em 2em 2em 2em; margin-bottom:0; margin-top:0; transition:box-shadow 0.3s, transform 0.3s; will-change:transform;">
-									<div class="pillar-icon" style="font-size:2.2em; margin-bottom:0.7em;">🚀</div>
-									<h4 style="font-size:1.25em;font-weight:900;margin-bottom:0.5em;">What I Care About</h4>
-									<p style="font-size:1.08em; color:#222;">How things work in the real world. I communicate clearly, execute relentlessly, and build things that scale, learn, and improve at every step.</p>
-								</div>
-							</div>
-						</div>
-						<!-- Philosophy Loop: Data • Product • Growth as a system -->
-						<div class="about-philosophy-loop" style="margin:3.5em auto 0 auto; display:flex; flex-direction:column; align-items:center;">
-							<div style="width:100%; max-width:640px; margin:0 auto; display:flex; justify-content:center; gap:32px;">
-								<div style="font-weight:900; color:var(--orange); font-size:1.18em; background:#fff; border-radius:22px; padding:0.7em 1.6em; box-shadow:0 4px 16px rgba(255,61,166,0.10); text-align:center; flex:1; transition:box-shadow 0.3s, transform 0.3s; will-change:transform;">Data</div>
-								<div style="font-weight:900; color:var(--blue); font-size:1.18em; background:#fff; border-radius:22px; padding:0.7em 1.6em; box-shadow:0 4px 16px rgba(58,134,255,0.10); text-align:center; flex:1; transition:box-shadow 0.3s, transform 0.3s; will-change:transform;">Product</div>
-								<div style="font-weight:900; color:var(--pink); font-size:1.18em; background:#fff; border-radius:22px; padding:0.7em 1.6em; box-shadow:0 4px 16px rgba(255,61,166,0.10); text-align:center; flex:1; transition:box-shadow 0.3s, transform 0.3s; will-change:transform;">Growth</div>
-								<div style="font-weight:900; color:var(--orange); font-size:1.18em; background:#fff; border-radius:22px; padding:0.7em 1.6em; box-shadow:0 4px 16px rgba(255,61,166,0.10); text-align:center; flex:1; transition:box-shadow 0.3s, transform 0.3s; will-change:transform;">Business</div>
-							</div>
-						</div>
-					</div>
-				</section>
-						<!-- Work Experience -->
-						<section id="experience" class="section-block">
-							<div class="section-header">
-								<h2 style="font-family: 'Poppins', 'Montserrat', sans-serif; font-size:2.2em; font-weight:900; color:#222;">Experience</h2>
-							</div>
-							<div class="experience-list" style="display:flex; flex-wrap:wrap; gap:2em; justify-content:center; position:relative;">
-								<div class="hero-bg-blob" style="top:-40px; left:10%; width:120px; height:120px; background:var(--color-yellow); opacity:0.18;"></div>
-								<div class="experience-item card" style="min-width:260px; flex:1 1 260px;">
-									<div class="exp-role" style="font-size:1.2em; font-weight:700; color:var(--color-blue);">Data Analyst</div>
-									<div class="exp-company" style="font-weight:600;">Heritage Aviation Pvt. Ltd.</div>
-									<div class="exp-duration" style="font-size:0.95em; color:var(--color-pink);">September 2024 - February 2025</div>
-									<div class="exp-desc">Analyzed flight operational data and identified key performance indicators to optimize operations. Created data visualizations and reports that provided actionable insights for management decision-making. Worked with cross-functional teams to understand business requirements and translate them into data solutions.<br>
-									<ul style="margin-top: 1rem;">
-										<li>Built automated data pipelines using Python for data extraction and processing</li>
-										<li>Created interactive dashboards in Tableau for real-time monitoring of KPIs</li>
-										<li>Conducted statistical analysis to identify trends and anomalies in operational data</li>
-										<li>Presented insights and recommendations to stakeholders</li>
-									</ul>
+								<section class="section-block hero-section" style="--section-bg: var(--yellow); position: relative; margin-top:32px;">
+									<div class="hero-bg-blob"></div>
+									<div class="blob blob1"></div>
+									<div class="blob blob2"></div>
+									<div class="container">
+										<div class="hero-flex">
+											<div class="main-content-text">
+												<h1 class="hero-title">Gopal Rawat</h1>
+												<p class="hero-tagline">AI & ML-driven Data Analysis</p>
+												<div class="about-hero">
+													I work at the intersection of <span class="highlight" style="color:var(--pink);font-weight:700;">data</span>, <span class="highlight" style="color:var(--blue);font-weight:700;">product</span>, and <span class="highlight" style="color:var(--orange);font-weight:700;">business</span> — where messy information turns into clear decisions.
+												</div>
+											</div>
+											<div class="main-content-image">
+												<div class="hero-profile">
+													<img src="images/gopal.jpg" alt="Gopal Rawat" style="width: 180px; border-radius: 32px;" />
+												</div>
+											</div>
+										</div>
 									</div>
-								</div>
-							</div>
-						</section>
+								</section>
+				<!-- About (top) -->
+								<section id="about" class="section-block" style="--section-bg: #fff;">
+									<div class="container">
+										<header class="major" style="margin-bottom:3.5em;">
+											<h2 class="section-title" style="text-align:left;">About Me</h2>
+										</header>
+										<div class="cards-flex">
+											<div class="card">
+												<div class="pillar-icon" style="font-size:2.2em; margin-bottom:0.7em;">📊</div>
+												<h4 style="font-size:1.25em;font-weight:900;margin-bottom:0.5em;">Core Strength</h4>
+												<p style="font-size:1.08em; color:#222;">Translating numbers into narratives. Understanding users, markets, and operations through data, then shaping insight into product improvements, growth strategies, and execution plans.</p>
+											</div>
+											<div class="card">
+												<div class="pillar-icon" style="font-size:2.2em; margin-bottom:0.7em;">🎯</div>
+												<h4 style="font-size:1.25em;font-weight:900;margin-bottom:0.5em;">What I Enjoy</h4>
+												<p style="font-size:1.08em; color:#222;">Solving ambiguous problems. Breaking them down, finding leverage points, aligning stakeholders, and owning outcomes end-to-end with ownership, curiosity, and accountability.</p>
+											</div>
+											<div class="card">
+												<div class="pillar-icon" style="font-size:2.2em; margin-bottom:0.7em;">🚀</div>
+												<h4 style="font-size:1.25em;font-weight:900;margin-bottom:0.5em;">What I Care About</h4>
+												<p style="font-size:1.08em; color:#222;">How things work in the real world. I communicate clearly, execute relentlessly, and build things that scale, learn, and improve at every step.</p>
+											</div>
+										</div>
+										<!-- Philosophy Loop: Data • Product • Growth as a system -->
+										<div class="about-philosophy-loop" style="margin:3.5em auto 0 auto; display:flex; flex-direction:column; align-items:center;">
+											<div style="width:100%; max-width:640px; margin:0 auto; display:flex; justify-content:center; gap:32px;">
+												<div style="font-weight:900; color:var(--orange); font-size:1.18em; background:#fff; border-radius:22px; padding:0.7em 1.6em; box-shadow:0 4px 16px rgba(255,61,166,0.10); text-align:center; flex:1; transition:box-shadow 0.3s, transform 0.3s; will-change:transform;">Data</div>
+												<div style="font-weight:900; color:var(--blue); font-size:1.18em; background:#fff; border-radius:22px; padding:0.7em 1.6em; box-shadow:0 4px 16px rgba(58,134,255,0.10); text-align:center; flex:1; transition:box-shadow 0.3s, transform 0.3s; will-change:transform;">Product</div>
+												<div style="font-weight:900; color:var(--pink); font-size:1.18em; background:#fff; border-radius:22px; padding:0.7em 1.6em; box-shadow:0 4px 16px rgba(255,61,166,0.10); text-align:center; flex:1; transition:box-shadow 0.3s, transform 0.3s; will-change:transform;">Growth</div>
+												<div style="font-weight:900; color:var(--orange); font-size:1.18em; background:#fff; border-radius:22px; padding:0.7em 1.6em; box-shadow:0 4px 16px rgba(255,61,166,0.10); text-align:center; flex:1; transition:box-shadow 0.3s, transform 0.3s; will-change:transform;">Business</div>
+											</div>
+										</div>
+									</div>
+								</section>
+						<!-- Work Experience -->
+								<section id="experience" class="section-block">
+									<div class="container">
+										<div class="section-header">
+											<h2 style="font-family: 'Poppins', 'Montserrat', sans-serif; font-size:2.2em; font-weight:900; color:#222;">Experience</h2>
+										</div>
+										<div class="experience-list" style="display:flex; flex-wrap:wrap; gap:2em; justify-content:center; position:relative;">
+											<div class="hero-bg-blob" style="top:-40px; left:10%; width:120px; height:120px; background:var(--color-yellow); opacity:0.18;"></div>
+											<div class="experience-item card" style="min-width:260px; flex:1 1 260px;">
+												<div class="exp-role" style="font-size:1.2em; font-weight:700; color:var(--color-blue);">Data Analyst</div>
+												<div class="exp-company" style="font-weight:600;">Heritage Aviation Pvt. Ltd.</div>
+												<div class="exp-duration" style="font-size:0.95em; color:var(--color-pink);">September 2024 - February 2025</div>
+												<div class="exp-desc">Analyzed flight operational data and identified key performance indicators to optimize operations. Created data visualizations and reports that provided actionable insights for management decision-making. Worked with cross-functional teams to understand business requirements and translate them into data solutions.<br>
+													<ul style="margin-top: 1rem;">
+														<li>Built automated data pipelines using Python for data extraction and processing</li>
+														<li>Created interactive dashboards in Tableau for real-time monitoring of KPIs</li>
+														<li>Conducted statistical analysis to identify trends and anomalies in operational data</li>
+														<li>Presented insights and recommendations to stakeholders</li>
+													</ul>
+												</div>
+											</div>
+										</div>
+									</div>
+								</section>
 
 						<!-- Tech Stack -->
 						<section id="tech" class="section-block">
