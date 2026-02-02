@@ -1,0 +1,12 @@
+.image.main {
+    display: block;
+    margin: 2rem 0;
+    width: 60%;  /* Reduced from 100% to 60% */
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.image.main img {
+    width: 100%;
+    height: auto;
+}

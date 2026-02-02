@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="120" height="120" viewBox="0 0 120 120">
+  <rect width="120" height="120" fill="none"/>
+  <!-- Simple stylized plus-mark cluster inspired by Tableau logo (for use as a local icon) -->
+  <g transform="translate(10,10)">
+    <g fill="#E87722">
+      <rect x="32" y="8" width="8" height="24" rx="2" />
+      <rect x="24" y="16" width="24" height="8" rx="2" />
+    </g>
+    <g fill="#F39C12" transform="translate(18,12)">
+      <rect x="32" y="8" width="6" height="18" rx="2" />
+      <rect x="28" y="14" width="18" height="6" rx="2" />
+    </g>
+    <g fill="#2E86C1" transform="translate(36,0)">
+      <rect x="32" y="8" width="6" height="18" rx="2" />
+      <rect x="28" y="14" width="18" height="6" rx="2" />
+    </g>
+    <g fill="#A569BD" transform="translate(44,18)">
+      <rect x="32" y="8" width="6" height="18" rx="2" />
+      <rect x="28" y="14" width="18" height="6" rx="2" />
+    </g>
+    <g fill="#48C9B0" transform="translate(0,28)">
+      <rect x="32" y="8" width="6" height="18" rx="2" />
+      <rect x="28" y="14" width="18" height="6" rx="2" />
+    </g>
+  </g>
+</svg>

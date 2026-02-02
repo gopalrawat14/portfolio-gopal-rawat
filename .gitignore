@@ -1,1 +1,6 @@
 .DS_Store
+*.bak
+*.bak.html
+original_main.js
+node_modules/
+.gemini/
